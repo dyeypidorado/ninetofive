@@ -1,0 +1,21 @@
+%h1 Listing subscribers
+
+%table
+  %tr
+    %th Name
+    %th Email
+    %th
+    %th
+    %th
+
+  - @subscribers.each do |subscriber|
+    %tr
+      %td= subscriber.name
+      %td= subscriber.email
+      %td= link_to 'Show', product_subscriber_path(@product.id, subscriber.id)
+      %td= link_to 'Edit', edit_product_subscriber_path(@product.id, subscriber.id)
+      %td= link_to 'Destroy', product_subscriber_path(@product.id, subscriber.id), confirm: 'Are you sure?', method: :delete
+
+%br
+
+= link_to 'New Subscriber', new_product_subscriber_path(@product.id)
