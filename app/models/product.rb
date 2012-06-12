@@ -6,4 +6,9 @@ class Product < ActiveRecord::Base
   
   has_many :lists, :foreign_key => :product_id, :dependent => :destroy
   has_many :subscribers, :through => :lists, :source => :subscriber, :dependent => :destroy
+  
+  validates :name,
+            :presence => true
+  validates :listname,
+            :presence => true
 end
