@@ -27,6 +27,7 @@ class SubscribersController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     if @subscriber = @product.subscribers.create(params[:subscriber])
+      ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
       redirect_to product_subscriber_path(@product.id, @subscriber.id), notice: 'Subscriber was successfully created.'
     else
       render action: "new"
