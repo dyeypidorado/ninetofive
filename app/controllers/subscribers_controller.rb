@@ -1,15 +1,5 @@
 class SubscribersController < ApplicationController
-  # GET /subscribers
-  def index
-    @product = Product.find(params[:product_id]);
-    @subscribers = @product.subscribers.all
-  end
-
-  # GET /subscribers/1
-  def show
-    @product = Product.find(params[:product_id]);
-    @subscriber = @product.subscribers.find(params[:id])
-  end
+  before_filter :set_madmimi, :only => [:confirm_subscription]
 
   # GET /subscribers/new
   def new
@@ -17,41 +7,27 @@ class SubscribersController < ApplicationController
     @subscriber = @product.subscribers.new
   end
 
-  # GET /subscribers/1/edit
-  def edit
-    @product = Product.find(params[:product_id]);
-    @subscriber = @product.subscribers.find(params[:id])
-  end
-
   # POST /subscribers
   def create
     @product = Product.find(params[:product_id])
     if @subscriber = @product.subscribers.create(params[:subscriber])
       ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
-      redirect_to product_subscriber_path(@product.id, @subscriber.id), notice: 'Subscriber was successfully created.'
+      redirect_to admin_product_subscriber_path(@product.id, @subscriber.id), notice: 'Subscriber was successfully created. Check your email for your confirmation message.'
     else
       render action: "new"
     end
   end
 
-  # PUT /subscribers/1
-  def update
-    @product = Product.find(params[:product_id]);
-    @subscriber = @product.subscribers.find(params[:id])
-
-    if @subscriber.update_attributes(params[:subscriber])
-      redirect_to @subscriber, notice: 'Subscriber was successfully updated.'
-    else
-      render action: "edit"
-    end
+  #SET mad mimi
+  def set_madmimi
+    @mimi = MadMimi.new('rystraum@gmail.com', 'd14980145460d10a304b52bfc973c1f3')
   end
 
-  # DELETE /subscribers/1
-  def destroy
+  #Confirm subscription to product
+  def confirm_subscription
     @product = Product.find(params[:product_id]);
     @subscriber = @product.subscribers.find(params[:id])
-    @subscriber.destroy
-
-    redirect_to product_subscribers_path(@product.id)
+    @mimi.add_to_list(@subscriber.email, @product.listname)
+    render :text => "Ok"
   end
 end
