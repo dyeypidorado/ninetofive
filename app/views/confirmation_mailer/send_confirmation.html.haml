@@ -1,2 +1,4 @@
-%p 
-  Hello
+%p
+  = "Hello #{@subscriber.name}. Click "
+  = link_to "here", confirm_url(:product_id => @product.id, :id => @subscriber.id)
+  = " to confirm" 
