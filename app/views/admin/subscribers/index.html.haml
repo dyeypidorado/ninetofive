@@ -1,0 +1,21 @@
+%h1 #{@product.name}'s subscribers
+
+%table
+  %tr
+    %th Name
+    %th Email
+    %th
+    %th
+    %th
+
+  - @subscribers.each do |subscriber|
+    %tr
+      %td= subscriber.name
+      %td= subscriber.email
+      %td= link_to 'Destroy', admin_product_subscriber_path(@product.id, subscriber.id), confirm: 'Are you sure?', method: :delete
+
+%br
+
+= link_to 'New Subscriber', new_admin_product_subscriber_path(@product.id)
+= "|"
+= link_to 'Back', admin_root_path
