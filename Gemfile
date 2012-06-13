@@ -9,6 +9,8 @@ gem 'devise'
 gem 'haml'
 gem 'friendly_id', '~> 4.0.1'
 gem 'activesupport'
+gem 'mysql2'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
