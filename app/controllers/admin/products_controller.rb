@@ -1,6 +1,7 @@
-class ProductsController < ApplicationController
+class Admin::ProductsController < ApplicationController
+  before_filter :authenticate_admin!
   before_filter :set_madmimi, :only => [:create]
-  
+
   # GET /products
   def index
     @products = Product.all
@@ -9,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   def show
     @product = Product.find(params[:id])
+    redirect_to admin_product_subscribers_path(@product.id)
   end
 
   # GET /products/new
@@ -26,7 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new(params[:product])
     if @product.save
       @mimi.new_list( @product.listname )
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to [:admin, @product], notice: 'Product was successfully created.'
     else
       render action: "new"
     end
@@ -36,7 +38,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update_attributes(params[:product])
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to [:admin, @product], notice: 'Product was successfully updated.'
     else
       render action: "edit"
     end
@@ -47,9 +49,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
 
-    redirect_to products_path
+    redirect_to admin_products_path
   end
-  
+
   #SET mad mimi
   def set_madmimi
     @mimi = MadMimi.new('rystraum@gmail.com', 'd14980145460d10a304b52bfc973c1f3')
