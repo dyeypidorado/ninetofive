@@ -17,4 +17,3 @@ class Product < ActiveRecord::Base
     @mimi.new_list listname
   end
 end
-

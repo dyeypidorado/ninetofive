@@ -15,6 +15,10 @@ class Subscriber < ActiveRecord::Base
   validates :name,
             :presence => true
 
+  def is_subscribed?(product)
+    product_list(product).status_code == StatusCode::Subscribed
+  end
+
   def product_list(product)
     lists.find_by_product_id(product.id)
   end

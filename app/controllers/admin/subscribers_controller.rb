@@ -1,6 +1,6 @@
 class Admin::SubscribersController < ApplicationController
   before_filter :authenticate_admin!
-  before_filter :set_madmimi, :only => [:confirm_subscription]
+  before_filter :set_madmimi, :only => [:destroy]
 
   # GET /subscribers
   def index
@@ -19,7 +19,7 @@ class Admin::SubscribersController < ApplicationController
     @product = Product.find(params[:product_id])
     if @subscriber = @product.subscribers.create(params[:subscriber])
       ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
-      redirect_to admin_product_subscriber_path(@product.id, @subscriber.id), notice: 'Subscriber was successfully created. Check your email for your confirmation message.'
+      redirect_to admin_product_subscribers_path(@product.id), notice: 'Subscriber was successfully created.'
     else
       render action: "new"
     end
@@ -30,6 +30,9 @@ class Admin::SubscribersController < ApplicationController
     @product = Product.find(params[:product_id]);
     @subscriber = @product.subscribers.find(params[:id])
     @subscriber.destroy
+    if @subscriber.is_subscribed?(@product)
+      @mimi.remove_from_list(@subscriber.email, @product.listname)
+    end
     redirect_to admin_product_subscribers_path(@product.id)
   end
 end
