@@ -52,3 +52,42 @@ form
     margin: 0 0 5px 0
     text-shadow: 1px 1px 0 rgba(255, 255, 255, 1)
 
+.flash
+  position: relative
+  margin-top: 90px
+  padding: 10px
+  text-align: center
+  border: 1px solid
+  color: #222 !important
+
+  // http://www.colourlovers.com/palette/17474/system_messages
+  // http://www.colourlovers.com/palette/17483/dark_system_messages
+
+  &.info, &.notice
+    border-color: #1E72A6
+    background-color: #94D6FF
+
+  &.success
+    border-color: #1EA635
+    background-color: #94FFA6
+
+  &.warning, &.alert
+    border-color: #A6A11E
+    background-color: #FFFB94
+    // border-color: #A66F1B
+    // background-color: #FFCE83
+
+  &.error
+    border-color: #A63232
+    background-color: #FF9494
+
+table
+  width: 100%
+  th
+    text-align: left
+  td
+    padding: 5px 1%
+  tr
+    &:nth-child(2n)
+      background-color: rgba(0,0,0,0.2)
+
