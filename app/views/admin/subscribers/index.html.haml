@@ -4,14 +4,14 @@
   %tr
     %th Name
     %th Email
-    %th
-    %th
+    %th Status
     %th
 
   - @subscribers.each do |subscriber|
     %tr
       %td= subscriber.name
       %td= subscriber.email
+      %td= subscriber.product_list(@product).status
       %td= link_to 'Destroy', admin_product_subscriber_path(@product.id, subscriber.id), confirm: 'Are you sure?', method: :delete
 
 %br

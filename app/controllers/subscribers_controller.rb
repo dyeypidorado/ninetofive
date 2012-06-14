@@ -13,7 +13,6 @@ class SubscribersController < ApplicationController
     @subscriber = @product.subscribers.build params[:subscriber]
     if @subscriber.save
       @subscriber.products << @product
-      @product.subscribers << @subscriber
 
       ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
       flash[:notice]  = "Thanks for signing up! We've sent you a confirmation email so we can check that your email do exist (and that you control your email)."
@@ -31,10 +30,10 @@ class SubscribersController < ApplicationController
     @subscriber = @product.subscribers.find params[:id]
     @mimi.add_to_list(@subscriber.email, @product.listname) if @subscriber and @product
     flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
+    @subscriber.update_product_list_status(@product, StatusCode::Subscribed)
     redirect_to root_path
   end
 
   def show_step
   end
 end
-

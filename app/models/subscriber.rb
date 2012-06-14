@@ -14,5 +14,13 @@ class Subscriber < ActiveRecord::Base
 
   validates :name,
             :presence => true
-end
 
+  def product_list(product)
+    lists.find_by_product_id(product.id)
+  end
+
+  def update_product_list_status(product, status)
+    product_list(product).update_attribute(status_code: status)
+  end
+
+end
