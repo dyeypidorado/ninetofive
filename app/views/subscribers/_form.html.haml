@@ -1,7 +1,7 @@
 = form_for [@product, @subscriber] do |f|
   - if @subscriber.errors.any?
     %div#error_explanation
-      %h2%= pluralize(@subscriber.errors.count, "error") + prohibited this subscriber from being saved:
+      %h2 #{pluralize(@subscriber.errors.count, "error")} is stopping you from being signed up:
 
       %ul
         - @subscriber.errors.full_messages.each do |msg|
