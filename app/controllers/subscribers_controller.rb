@@ -9,12 +9,14 @@ class SubscribersController < ApplicationController
 
   # POST /subscribers
   def create
-    @product = Product.find(params[:product_id])
-    if @subscriber = @product.subscribers.create(params[:subscriber])
+    @product = Product.find params[:product_id]
+    @subscriber = @product.subscribers.new params[:subscriber]
+    if @subscriber.save
       ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
-      redirect_to admin_product_subscriber_path(@product.id, @subscriber.id), notice: 'Subscriber was successfully created. Check your email for your confirmation message.'
+      flash[:notice] = 'Subscriber was successfully created. Check your email for your confirmation message.'
+      redirect_to product_subscriber_path(@product.id, @subscriber.id)
     else
-      render action: "new"
+      render template: "products/show"
     end
   end
 
