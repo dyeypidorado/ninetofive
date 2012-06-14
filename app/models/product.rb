@@ -4,8 +4,8 @@ class Product < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  has_many :lists, :foreign_key => :product_id, :dependent => :destroy
-  has_many :subscribers, :through => :lists, :source => :subscriber, :dependent => :destroy
+  has_many :lists
+  has_many :subscribers, :through => :lists
 
   validates :name, presence: true
   def to_s; name end
