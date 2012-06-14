@@ -29,8 +29,9 @@ class SubscribersController < ApplicationController
   def confirm_subscription
     @product = Product.find params[:product_id]
     @subscriber = @product.subscribers.find params[:id]
-    @mimi.add_to_list(@subscriber.email, @product.listname)
-    render :text => "Ok"
+    @mimi.add_to_list(@subscriber.email, @product.listname) if @subscriber and @product
+    flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
+    redirect_to root_path
   end
 
   def show_step
