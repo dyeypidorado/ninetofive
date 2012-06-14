@@ -1,8 +1,1 @@
 %h1 Welcome to 9to5 Millionaire
-
-%table
-  %tr
-    %td= link_to 'Home', admin_root_path
-    - @products.each do |product|
-      %td= link_to product.name, [:admin, product]
-      %td= link_to 'New Product', new_admin_product_path
