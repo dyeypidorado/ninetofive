@@ -11,6 +11,7 @@ gem 'friendly_id', '~> 4.0.1'
 gem 'activesupport'
 gem 'mysql2'
 gem 'thin'
+gem 'jquery-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -18,5 +19,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+group :development do
+  gem 'pry'
+end
 
