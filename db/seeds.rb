@@ -8,3 +8,5 @@
 
 password = 'admin_9to5'
 Admin.create(email: 'admin@9to5mil.com', password: password, :password_confirmation => password)
+Product.create name: "The 9 to 5 Millionaire Book"
+
