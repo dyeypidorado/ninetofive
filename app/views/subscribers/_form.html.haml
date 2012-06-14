@@ -1,4 +1,4 @@
-= form_for([:admin, @product, @subscriber]) do |f|
+= form_for([@product, @subscriber]) do |f|
   - if @subscriber.errors.any?
     %div#error_explanation
       %h2%= pluralize(@subscriber.errors.count, "error") + prohibited this subscriber from being saved:
@@ -18,4 +18,5 @@
     = f.text_field :email
 
   %div.actions
-    = f.submit
+    = f.submit "I want to sign up!"
+
