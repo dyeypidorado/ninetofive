@@ -27,7 +27,6 @@ class Admin::ProductsController < ApplicationController
   def create
     @product = Product.new(params[:product])
     if @product.save
-      @mimi.new_list( @product.listname )
       redirect_to [:admin, @product], notice: 'Product was successfully created.'
     else
       render action: "new"
