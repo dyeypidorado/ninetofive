@@ -30,6 +30,6 @@ class Admin::SubscribersController < ApplicationController
     @product = Product.find(params[:product_id]);
     @subscriber = @product.subscribers.find(params[:id])
     @subscriber.destroy
-    redirect_to product_subscribers_path(@product.id)
+    redirect_to admin_product_subscribers_path(@product.id)
   end
 end
