@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require pageone/smoothscroll
+//= require pageone/nivo_slider
+//= require pageone/easing
+//= require pageone/fancybox
+//= require pageone/init
 //= require_tree .
+

@@ -1,10 +1,50 @@
 !!!
+/[if IE 7 ] <html class="ie7 oldie">
+/[if IE 8 ] <html class="ie8 oldie">
+/[if IE 9 ] <html class="ie9">
+/ [if (gt IE 9)|!(IE)]><!
 %html
-%head
-  %title= Ninetofive
-  = stylesheet_link_tag    "application", :media => "all"
-  = javascript_include_tag "application"
-  = csrf_meta_tags
+  / <![endif]
+  %head
+    %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    %title The 9 to 5  Millionaire
+    /[if lt IE 9]
+      %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js" }
+    %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
+
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
 %body
-  = yield
+  #header-wrap
+    %header
+      %hgroup
+        %h1
+          = link_to "The 9 to 5 Millionaire", root_path
+        %h3 Journey from a 9 to 5 job to financial freedom.
+      %nav
+        %ul
+          %li= link_to "Home", root_path
+  / content-wrap
+  .content-wrap
+    / about us
+    %section#about-us.clearfix
+      = yield
+      %aside
+        = yield(:aside)
+
+  / footer
+  %footer
+    .footer-content
+      %ul.footer-menu
+        %li
+          = link_to "Home", root_path
+      %p.footer-text
+        The 9 to 5 Millionaire &copy; 2012
+        Designed by
+        %a{:href => "http://www.styleshout.com/"} Styleshout
 
