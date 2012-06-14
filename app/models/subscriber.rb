@@ -20,7 +20,7 @@ class Subscriber < ActiveRecord::Base
   end
 
   def update_product_list_status(product, status)
-    product_list(product).update_attribute(status_code: status)
+    product_list(product).update_attributes(status_code: status)
   end
 
 end
