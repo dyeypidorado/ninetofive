@@ -18,11 +18,6 @@ class SubscribersController < ApplicationController
     end
   end
 
-  #SET mad mimi
-  def set_madmimi
-    @mimi = MadMimi.new('rystraum@gmail.com', 'd14980145460d10a304b52bfc973c1f3')
-  end
-
   #Confirm subscription to product
   def confirm_subscription
     @product = Product.find(params[:product_id]);
@@ -31,3 +26,4 @@ class SubscribersController < ApplicationController
     render :text => "Ok"
   end
 end
+

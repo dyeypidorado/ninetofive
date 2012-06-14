@@ -52,8 +52,5 @@ class Admin::ProductsController < ApplicationController
     redirect_to admin_products_path
   end
 
-  #SET mad mimi
-  def set_madmimi
-    @mimi = MadMimi.new('rystraum@gmail.com', 'd14980145460d10a304b52bfc973c1f3')
-  end
 end
+
