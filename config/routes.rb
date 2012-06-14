@@ -8,10 +8,11 @@ Ninetofive::Application.routes.draw do
   end
 
   resources :products, :only => [:show, :index] do
-    resources :subscribers
+    resources :subscribers do
+      get "confirm", :on => :member, :as => :confirm
+    end
   end
 
-  match 'products/:product_id/subscriber/:id/confirm' => 'subscribers#confirm_subscription' ,:as => :confirm
   match '/dashboard' => 'Admin::products#index', :as => :admin_root
 
   root :to => 'products#show'
