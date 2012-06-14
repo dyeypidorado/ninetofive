@@ -9,7 +9,7 @@ Ninetofive::Application.routes.draw do
 
   resources :products, :only => [:show, :index] do
     resources :subscribers do
-      get "confirm", :on => :member, :as => :confirm
+      get "confirm_subscription", :on => :member, :as => :confirm
     end
   end
 
