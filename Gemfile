@@ -6,7 +6,7 @@ gem 'therubyracer'
 gem 'execjs'
 gem 'madmimi'
 gem 'devise'
-gem 'haml'
+gem 'haml-rails'
 gem 'friendly_id', '~> 4.0.1'
 gem 'activesupport'
 gem 'mysql2'
@@ -19,3 +19,4 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
