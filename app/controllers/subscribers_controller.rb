@@ -18,7 +18,7 @@ class SubscribersController < ApplicationController
       flash[:notice]  = "Thanks for signing up! We've sent you a confirmation email so we can check that your email do exist (and that you control your email)."
       flash[:notice] += " We hate spam as much as you do!"
       # redirect_to step_product_subscriber_path(@product.id, @subscriber.id)
-      redirect_to root_path
+      redirect_to admin_root_path
     else
       render template: "products/show"
     end
