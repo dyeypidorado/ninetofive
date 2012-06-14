@@ -10,11 +10,16 @@ class SubscribersController < ApplicationController
   # POST /subscribers
   def create
     @product = Product.find params[:product_id]
-    @subscriber = @product.subscribers.new params[:subscriber]
+    @subscriber = @product.subscribers.build params[:subscriber]
     if @subscriber.save
+      @subscriber.products << @product
+      @product.subscribers << @subscriber
+
       ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
-      flash[:notice] = 'Subscriber was successfully created. Check your email for your confirmation message.'
-      redirect_to product_subscriber_path(@product.id, @subscriber.id)
+      flash[:notice]  = "Thanks for signing up! We've sent you a confirmation email so we can check that your email do exist (and that you control your email)."
+      flash[:notice] += " We hate spam as much as you do!"
+      # redirect_to step_product_subscriber_path(@product.id, @subscriber.id)
+      redirect_to root_path
     else
       render template: "products/show"
     end
@@ -22,10 +27,13 @@ class SubscribersController < ApplicationController
 
   #Confirm subscription to product
   def confirm_subscription
-    @product = Product.find(params[:product_id]);
-    @subscriber = @product.subscribers.find(params[:id])
+    @product = Product.find params[:product_id]
+    @subscriber = @product.subscribers.find params[:id]
     @mimi.add_to_list(@subscriber.email, @product.listname)
     render :text => "Ok"
+  end
+
+  def show_step
   end
 end
 
