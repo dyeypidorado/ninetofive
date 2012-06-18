@@ -3,6 +3,7 @@ Ninetofive::Application.routes.draw do
 
   namespace :admin do
     resources :products do
+      resources :pages
       resources :subscribers
     end
   end
@@ -18,4 +19,3 @@ Ninetofive::Application.routes.draw do
 
   root :to => 'products#show'
 end
-
