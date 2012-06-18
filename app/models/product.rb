@@ -8,6 +8,8 @@ class Product < ActiveRecord::Base
   has_many :lists
   has_many :subscribers, :through => :lists
 
+  has_many :pages
+
   validates :name, presence: true
   def to_s; name end
   def listname; name end
