@@ -1,4 +1,6 @@
 class Admin::PagesController < ApplicationController
+  before_filter :authenticate_admin!
+
   def index
     @product = Product.find(params[:product_id])
     @pages = @product.pages
@@ -7,5 +9,14 @@ class Admin::PagesController < ApplicationController
   def show
     @product = Product.find(params[:product_id])
     @page = @product.pages.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:product_id])
+    @page = @product.pages.find(params[:id])
+    @page.title = params[:content][:page_title][:value]
+    @page.content = params[:content][:page_content][:value]
+    @page.save!
+    render :text => ""
   end
 end
