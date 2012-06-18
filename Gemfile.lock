@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/jejacks0n/mercury.git
+  revision: 9d7bfc0ffbdd36cd1777a8e439a424aefda953d0
+  ref: 9d7bfc0ffbdd36cd1777a8e439a424aefda953d0
+  specs:
+    mercury-rails (0.8.0)
+      coffee-rails
+      rails (~> 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -147,6 +156,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   madmimi
+  mercury-rails!
   mysql2
   pry
   rails (= 3.2.3)

@@ -1,4 +1,6 @@
 Ninetofive::Application.routes.draw do
+  mount Mercury::Engine => '/'
+
   devise_for :admins
 
   namespace :admin do

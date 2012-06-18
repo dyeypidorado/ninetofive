@@ -18,4 +18,3 @@
 //= require pageone/fancybox
 //= require pageone/init
 //= require_tree .
-
