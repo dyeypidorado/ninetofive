@@ -1,6 +1,4 @@
-class Admin::PagesController < ApplicationController
-  before_filter :authenticate_admin!
-
+class Admin::PagesController < Admin::BaseController
   def index
     @product = Product.find(params[:product_id])
     @pages = @product.pages

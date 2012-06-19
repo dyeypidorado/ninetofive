@@ -1,5 +1,4 @@
-class Admin::SubscribersController < ApplicationController
-  before_filter :authenticate_admin!
+class Admin::SubscribersController < Admin::BaseController
   before_filter :set_madmimi, :only => [:destroy]
 
   # GET /subscribers

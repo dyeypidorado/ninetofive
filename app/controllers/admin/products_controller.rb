@@ -1,5 +1,4 @@
-class Admin::ProductsController < ApplicationController
-  before_filter :authenticate_admin!
+class Admin::ProductsController < Admin::BaseController
   before_filter :set_madmimi, :only => [:create]
 
   # GET /products
@@ -52,4 +51,3 @@ class Admin::ProductsController < ApplicationController
   end
 
 end
-
