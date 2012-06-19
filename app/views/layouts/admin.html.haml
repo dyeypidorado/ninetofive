@@ -15,7 +15,7 @@
       %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js" }
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
 
-    = stylesheet_link_tag "application", :media => "all"
+    = stylesheet_link_tag "dashboard", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
     :javascript
@@ -28,15 +28,22 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
-
 %body
   #header-wrap
     %header
+      %nav#routing
+        %ul
+          - if admin_signed_in?
+            %li= "Hello Admin"
+            %li= link_to "View Website", root_path
+            %li= link_to "Log out", destroy_admin_session_path, :method => :delete
+          - else
+            %li= link_to "Log in", new_admin_session_path
       %hgroup
         %h1
           = link_to "The 9 to 5 Millionaire", root_path
         %h3 Journey from a 9 to 5 job to financial freedom.
-      %nav
+      %nav#account_lists
         %ul
           - if admin_signed_in?
             %li= link_to "Home", admin_root_path
@@ -58,12 +65,6 @@
   / footer
   %footer
     .footer-content
-      %ul.footer-menu
-        %li= link_to "Home", root_path
-        - if admin_signed_in?
-          %li= link_to "Log out", destroy_admin_session_path, :method => :delete
-        - else
-          %li= link_to "Log in", new_admin_session_path
       %p.footer-text
         The 9 to 5 Millionaire &copy; 2012
         Designed by

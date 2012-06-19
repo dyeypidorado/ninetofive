@@ -13,6 +13,4 @@
  *= require pageone/fancybox
  *= require main
  *= require_self
- *= require_tree .
  */
-
