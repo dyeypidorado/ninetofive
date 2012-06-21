@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  region1: MyString
+  region2: MyString
+  region3: MyString
+  region4: MyString
+  region5: MyString
+
+two:
+  region1: MyString
+  region2: MyString
+  region3: MyString
+  region4: MyString
+  region5: MyString
