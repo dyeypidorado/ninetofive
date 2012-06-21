@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120618105142) do
+ActiveRecord::Schema.define(:version => 20120621085741) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -54,6 +54,30 @@ ActiveRecord::Schema.define(:version => 20120618105142) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "slug"
+  end
+
+  create_table "referrals", :force => true do |t|
+    t.string   "code"
+    t.string   "link"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "static_pages", :force => true do |t|
+    t.string   "region1"
+    t.string   "region2"
+    t.string   "region3"
+    t.string   "region4"
+    t.string   "region5"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "statuses", :force => true do |t|
+    t.string   "value"
+    t.integer  "page_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "subscribers", :force => true do |t|
