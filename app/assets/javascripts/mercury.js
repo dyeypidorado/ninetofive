@@ -453,8 +453,10 @@ window.Mercury = {
 //Before Edit
 $(window).bind('mercury:ready', function() {
   var link = $('#mercury_iframe').contents().find('#edit_link');
+  var link1 = $('#mercury_iframe').contents().find('#show_link');
   Mercury.saveURL = link.data('save-url');
   link.hide();
+  link1.hide();
 });
 
 // After Saving
