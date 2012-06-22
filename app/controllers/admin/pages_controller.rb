@@ -9,6 +9,15 @@ class Admin::PagesController < Admin::BaseController
     @page = @product.pages.find(params[:id])
   end
 
+  def new
+    @product = Product.find(params[:product_id])
+    @page = @product.pages.create :title => "Your Product Page Title", :content => "Insert content here."
+    @status = Status.create value: "#{@product.name}_Squeeze_Page#{@product.pages.count}"
+    @status.page_id = @page.id
+    @status.save!
+    redirect_to [:admin, @product, @page]
+  end
+
   def update
     @product = Product.find(params[:product_id])
     @page = @product.pages.find(params[:id])
