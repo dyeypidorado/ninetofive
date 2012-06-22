@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621085741) do
+ActiveRecord::Schema.define(:version => 20120622125753) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20120621085741) do
   add_index "admins", ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
 
   create_table "lists", :force => true do |t|
-    t.integer  "product_id"
+    t.integer  "page_id"
     t.integer  "subscriber_id"
     t.datetime "created_at",                   :null => false
     t.datetime "updated_at",                   :null => false
@@ -45,8 +45,9 @@ ActiveRecord::Schema.define(:version => 20120621085741) do
     t.integer  "status_code"
     t.integer  "product_id"
     t.string   "link_code"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "page_type",   :default => 0
   end
 
   create_table "products", :force => true do |t|

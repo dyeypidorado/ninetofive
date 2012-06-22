@@ -1,15 +1,17 @@
 class List < ActiveRecord::Base
   attr_accessible :status_code
 
-  belongs_to :product
+  belongs_to :page
   belongs_to :subscriber
 
   def status
     case status_code
     when StatusCode::Subscribed
       "subscribed"
-    else
+    when StatusCode::Pending
       "pending"
+    else
+      "-"
     end
   end
 
