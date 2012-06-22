@@ -1,19 +1,16 @@
 class Admin::SubscribersController < Admin::BaseController
   before_filter :set_madmimi, :only => [:destroy]
 
-  # GET /subscribers
   def index
     @product = Product.find(params[:product_id]);
     @subscribers = @product.subscribers.all
   end
 
-  # GET /subscribers/new
   def new
     @product = Product.find(params[:product_id]);
     @subscriber = @product.subscribers.new
   end
 
-  # POST /subscribers
   def create
     @product = Product.find(params[:product_id])
     if @subscriber = @product.subscribers.create(params[:subscriber])
@@ -24,7 +21,6 @@ class Admin::SubscribersController < Admin::BaseController
     end
   end
 
-  # DELETE /subscribers/1
   def destroy
     @product = Product.find(params[:product_id]);
     @subscriber = @product.subscribers.find(params[:id])
