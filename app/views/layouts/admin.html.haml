@@ -47,6 +47,7 @@
         %ul
           - if admin_signed_in?
             %li= link_to "Home", admin_root_path
+            %li= link_to "Static Pages", admin_static_pages_path
             - Product.all.each do |p|
               %li= link_to p.name, [:admin, p]
             %li= link_to 'New Product', new_admin_product_path
