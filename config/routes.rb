@@ -1,11 +1,15 @@
 Ninetofive::Application.routes.draw do
-  resources :static_pages
+  resources :static_pages, only: [:show]
+  resources :pages, only: [:show] do
+    match "(/:email)" => "pages#show"
+  end
 
   mount Mercury::Engine => '/'
 
   devise_for :admins
 
   namespace :admin do
+    resources :static_pages
     resources :products do
       resources :pages
       resources :subscribers
