@@ -45,6 +45,8 @@
             %li= link_to 'New Product', new_admin_product_path
           - else
             %li= link_to "Home", root_path
+            - Product.all.each do |p|
+              %li= link_to p.name, p
   / content-wrap
   .content-wrap
     / about us
@@ -68,3 +70,4 @@
         The 9 to 5 Millionaire &copy; 2012
         Designed by
         %a{:href => "http://www.styleshout.com/"} Styleshout
+
