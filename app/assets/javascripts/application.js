@@ -17,4 +17,6 @@
 //= require pageone/easing
 //= require pageone/fancybox
 //= require pageone/init
+//= require analytics
 //= require_tree .
+
