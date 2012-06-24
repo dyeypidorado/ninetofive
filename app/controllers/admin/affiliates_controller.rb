@@ -5,7 +5,7 @@ class Admin::AffiliatesController < Admin::BaseController
   end
 
   def show
-
+    @lists = @affiliate.lists.includes(:subscriber, :page)
   end
 
   def new
