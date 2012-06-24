@@ -1,2 +1,11 @@
-%h1 Admin::Affiliates#index
-%p Find me in app/views/admin/affiliates/index.html.haml
+%h1 Affiliates
+%table.pretty
+  %tr
+    %th Name
+    %th Code
+    %th Actions
+  - for affiliate in @affiliates
+    = render affiliate, template: :table_row
+
+= link_to "New", [:new, :admin, :affiliate]
+

@@ -1,0 +1,7 @@
+- if template == :table_row
+  %tr
+    %td= link_to affiliate.name, [:admin, affiliate]
+    %td #{affiliate.code}
+    %td.actions
+      = link_to "Edit", [:edit, :admin, affiliate]
+

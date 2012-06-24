@@ -1,2 +1,10 @@
-%h1 Admin::Affiliates#show
-%p Find me in app/views/admin/affiliates/show.html.haml
+%p#notice= notice
+
+%p
+  %b Name:
+  = @affiliate.name
+
+= link_to 'Edit', edit_admin_affiliate_path(@affiliate)
+\|
+= link_to 'Back', admin_affiliates_path
+
