@@ -23,8 +23,12 @@ class Subscriber < ActiveRecord::Base
     lists.find_by_product_id(product.id)
   end
 
-  def update_product_list_status(product, status)
-    product_list(product).update_attributes(status_code: status)
+  def subscribed_to_page(page)
+    if lists.find_by_page_id(page.id).set_subscribed
+      @mimi = Mimi::set_madmimi
+      @mimi.add_to_list(self.email, page.listname)
+    end
   end
 
 end
+
