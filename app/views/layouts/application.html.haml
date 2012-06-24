@@ -42,6 +42,7 @@
     / about us
     - flash.each do |k,v|
       = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
+    %nav#inline_nav= yield(:inline_nav)
     %section#about-us.clearfix
       = yield
       %aside= yield(:aside)
