@@ -1,0 +1,8 @@
+- if template == :table_row
+  %tr
+    %td #{product.name}
+    %td.actions
+      = link_to "Edit", [:edit, :admin, product]
+      = link_to "Pages", [:admin, product, :pages]
+      = link_to "Subscribers", [:admin, product, :subscribers]
+

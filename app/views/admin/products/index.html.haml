@@ -1,1 +1,8 @@
 %h1 Welcome to 9to5 Millionaire
+%table.pretty
+  %tr
+    %th Name
+    %th Actions
+  - for product in @products
+    = render product, template: :table_row
+
