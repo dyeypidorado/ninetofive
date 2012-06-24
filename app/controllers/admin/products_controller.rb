@@ -1,33 +1,46 @@
 class Admin::ProductsController < Admin::BaseController
   before_filter :set_madmimi, :only => [:create]
+  before_filter :get_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
-  end
-
-  def show
-    @product = Product.find(params[:id])
-    @pages = @product.pages
+    respond_with :admin, @products
   end
 
   def new
     @product = Product.new
+    respond_with :admin, @product
   end
 
   def create
-    @product = Product.new(params[:product])
-    if @product.save
-      redirect_to [:admin, @product], notice: 'Product was successfully created.'
-    else
-      render action: "new"
-    end
+    @product = Product.create params[:product]
+    respond_with :admin, @product
+  end
+
+  def show
+    @pages = @product.pages
+    respond_with :admin, @product
+  end
+
+  def edit
+    respond_with :admin, @product
+  end
+
+  def update
+    @product.update_attributes params[:product]
+    respond_with :admin, @product
   end
 
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
 
-    redirect_to admin_products_path
+    respond_with :admin, @product
+  end
+
+  protected
+  def get_product
+    @product = Product.find params[:id]
   end
 
 end
+
