@@ -9,13 +9,15 @@ class Product < ActiveRecord::Base
   has_many :lists, :through => :pages
 
   validates :name, presence: true
+
   def to_s; name end
 
   def create_squeeze
     self.pages.create title: "Your squeeze page title here.", content: "Your content here." , page_type: PageType::Squeeze
   end
 
-  def subscribers_list (page)
-    page.subscribers
+  def squeeze_page
+    pages.find_by_page_type(PageType::Squeeze)
   end
 end
+
