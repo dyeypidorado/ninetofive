@@ -13,6 +13,8 @@ gem 'mysql2'
 gem 'thin'
 gem 'jquery-rails'
 gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '9d7bfc0ffbdd36cd1777a8e439a424aefda953d0'
+gem 'responders'
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -22,3 +24,4 @@ end
 group :development do
   gem 'pry'
 end
+
