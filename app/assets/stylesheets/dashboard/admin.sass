@@ -12,7 +12,6 @@ header
   height: 70px
   margin: 0 auto
 
-
   hgroup
     background: image-url('logo.png') no-repeat
     position: absolute
@@ -30,30 +29,22 @@ header
     h3
       text-indent: -9999em
       height: 0
-  nav
-    ul
-      font: bold 12px/25px  Helvetica, Arial, Sans-serif
-      padding: 0
-      list-style: none
-      li
-        float: left
+  nav#routing
+    float: right
+
+nav
+  ul
+    font: bold 12px/25px  Helvetica, Arial, Sans-serif
+    padding: 0
+    list-style: none
+    li
+      float: left
+      color: #c5c4c4
+      margin-right: 10px
+      a:link, a:visited
         color: #c5c4c4
-        margin-right: 10px
-        //text-shadow: 0 -1px 0 rgba(10, 10, 10, 1)
-
-        a:link, a:visited
-          color: #c5c4c4
-          //text-shadow: 0 -1px 0 rgba(10, 10, 10, 1)
-
       a:hover, a:active
         color: #17a231
-
-nav#routing
-  float: right
-nav#account_lists
-  float: left
-  padding: 70px 0 0 0
-  height: 70px
 
 #header-wrap
   width: 100%
@@ -67,9 +58,15 @@ nav#account_lists
 .content-wrap
   width: 940px
   margin: 0 auto
+  margin-top: 70px
+  nav
+    position: relative
+    ul li a
+      color: black
+
   section
     position: relative
-    padding: 90px 0 25px 0
+    padding-bottom: 25px
 
 .align-left
   float: left
@@ -84,3 +81,4 @@ nav#account_lists
   content: " "
   clear: both
   height: 0
+

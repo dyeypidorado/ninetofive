@@ -30,24 +30,21 @@
           - else
             %li= link_to "Log in", new_admin_session_path
       %hgroup
-        %h1
-          = link_to "The 9 to 5 Millionaire", root_path
+        %h1= link_to "The 9 to 5 Millionaire", root_path
         %h3 Journey from a 9 to 5 job to financial freedom.
-      %nav#account_lists
-        %ul
-          - if admin_signed_in?
-            %li= link_to "Home", admin_root_path
-            %li= link_to "Static Pages", admin_static_pages_path
-            - Product.all.each do |p|
-              %li= link_to p.name, [:admin, p]
-            %li= link_to 'New Product', new_admin_product_path
-          - else
-            %li= link_to "Home", root_path
+
   / content-wrap
   .content-wrap
     / about us
     - flash.each do |k,v|
       = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
+    - if admin_signed_in?
+      %nav#account_lists.clearfix
+        %ul
+          %li= link_to "Home", admin_root_path
+          %li= link_to "Static Pages", admin_static_pages_path
+          %li= link_to "Products", [:admin, :products]
+
     %section#about-us.clearfix
       = yield
       %aside
@@ -58,3 +55,4 @@
     .footer-content
       %p.footer-text
         The 9 to 5 Millionaire &copy; 2012
+
