@@ -1,4 +1,7 @@
 %h1 #{@product.name}'s pages
-- @pages.each do |page|
-  %li
-    %ul= link_to page.title, admin_product_page_path(@product.id, page.id)
+%table.pretty
+  %tr
+    %th Name
+  - for page in @pages
+    = render page, template: :table_row
+

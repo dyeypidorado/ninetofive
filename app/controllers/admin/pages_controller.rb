@@ -1,16 +1,17 @@
 class Admin::PagesController < Admin::BaseController
+  before_filter :find_product
+  before_filter :find_page, only: [:show, :update]
+  layout :resolve_layout
+
+  def resolve_layout
+    action_name == 'show' ? 'application' : 'admin'
+  end
+
   def index
-    @product = Product.find(params[:product_id])
     @pages = @product.pages
   end
 
-  def show
-    @product = Product.find(params[:product_id])
-    @page = @product.pages.find(params[:id])
-  end
-
   def new
-    @product = Product.find(params[:product_id])
     @page = @product.pages.create :title => "Your Product Page Title", :content => "Insert content here."
     #@status = Status.create value: "#{@product.name}_Squeeze_Page#{@product.pages.count}"
     #@status.page_id = @page.id
@@ -18,12 +19,24 @@ class Admin::PagesController < Admin::BaseController
     redirect_to [:admin, @product, @page]
   end
 
+
+  def show
+  end
+
   def update
-    @product = Product.find(params[:product_id])
-    @page = @product.pages.find(params[:id])
     @page.title = params[:content][:page_title][:value]
     @page.content = params[:content][:page_content][:value]
     @page.save!
     render :text => ""
   end
+
+  protected
+  def find_product
+    @product = Product.find params[:product_id]
+  end
+
+  def find_page
+    @page = @product.pages.find params[:id]
+  end
 end
+
