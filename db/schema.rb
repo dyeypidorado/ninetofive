@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624100047) do
+ActiveRecord::Schema.define(:version => 20120624145711) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -41,10 +41,14 @@ ActiveRecord::Schema.define(:version => 20120624100047) do
   create_table "lists", :force => true do |t|
     t.integer  "page_id"
     t.integer  "subscriber_id"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
-    t.integer  "status_code",   :default => 0
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "status_code",       :default => 0
+    t.string   "confirmation_code"
+    t.integer  "affiliate_id"
   end
+
+  add_index "lists", ["affiliate_id"], :name => "index_lists_on_affiliate_id"
 
   create_table "pages", :force => true do |t|
     t.string   "title"
