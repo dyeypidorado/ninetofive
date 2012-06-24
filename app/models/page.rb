@@ -14,11 +14,11 @@ class Page < ActiveRecord::Base
   def pagetype
     case page_type
     when PageType::Squeeze
-      "squeezed"
+      "squeeze"
     when PageType::Sales
       "sales"
     else
-      ""
+      "-"
     end
   end
 
@@ -32,3 +32,4 @@ class Page < ActiveRecord::Base
     @mimi.new_list listname
   end
 end
+
