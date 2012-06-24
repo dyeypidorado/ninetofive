@@ -14,6 +14,7 @@ Ninetofive::Application.routes.draw do
       resources :pages
       resources :subscribers
     end
+    resources :affiliates
   end
 
   resources :products, :only => [:show, :index] do
@@ -27,3 +28,4 @@ Ninetofive::Application.routes.draw do
 
   root :to => 'products#show'
 end
+
