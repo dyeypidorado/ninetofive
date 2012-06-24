@@ -13,13 +13,15 @@ class ApplicationController < ActionController::Base
   end
 
   def save_referrer
-    if params[:referrer]
-      Referral.create(code: params[:referrer], link: request.url)
-      @referrer = params[:referrer]
+    code = params[:referrer] || params[:a]
+    if code
+      Referral.create(code: code, link: request.url)
+      @affiliate = Affiliate.find_by_code code
     end
   end
 
   def get_source
-    @source = params[:source] if params[:source]
+    @source = Subscriber.find_by_email params[:source] if params[:source]
   end
 end
+

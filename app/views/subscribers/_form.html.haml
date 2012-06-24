@@ -1,4 +1,5 @@
-= form_for [@product, @subscriber] do |f|
+= form_for [@page, @subscriber] do |f|
+  = hidden_field :affiliate, :id
   - if @subscriber.errors.any?
     %div#error_explanation
       %h2 #{pluralize(@subscriber.errors.count, "error")} is stopping you from being signed up:

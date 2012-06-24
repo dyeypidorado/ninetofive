@@ -3,22 +3,30 @@ class SubscribersController < ApplicationController
 
   # GET /subscribers/new
   def new
-    @product = Product.find(params[:product_id]);
+    @product = Product.find(params[:product_id])
     @subscriber = @product.subscribers.new
   end
 
   # POST /subscribers
   def create
-    @product = Product.find params[:product_id]
-    @subscriber = @product.subscribers.build params[:subscriber]
-    if @subscriber.save
-      @subscriber.products << @product
+    @page = Page.find_by_id params[:page_id]
+    @subscriber = @page.subscribers.build params[:subscriber]
+    @affiliate = Affiliate.find params[:affiliate][:id]
 
-      ConfirmationMailer.send_confirmation(@product, @subscriber).deliver
+    if @subscriber.save
+      @subscriber.pages << @page
+
+      if @affiliate
+        list = @subscriber.lists.find_by_page_id @page.id
+        list.affiliate = @affiliate
+        list.save
+      end
+
+      ConfirmationMailer.send_confirmation(@page, @subscriber).deliver
       flash[:notice]  = "Thanks for signing up! We've sent you a confirmation email so we can check that your email do exist (and that you control your email)."
       flash[:notice] += " We hate spam as much as you do!"
       # redirect_to step_product_subscriber_path(@product.id, @subscriber.id)
-      redirect_to admin_root_path
+      redirect_to root_path
     else
       render template: "products/show"
     end
