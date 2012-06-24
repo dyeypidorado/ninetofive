@@ -32,16 +32,20 @@ class SubscribersController < ApplicationController
     end
   end
 
-  #Confirm subscription to product
+  # Confirm subscription to page
   def confirm_subscription
-    @product = Product.find params[:product_id]
-    @subscriber = @product.subscribers.find params[:id]
-    @mimi.add_to_list(@subscriber.email, @product.listname) if @subscriber and @product
-    flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
-    @subscriber.update_product_list_status(@product, StatusCode::Subscribed)
+    list = List.includes(:page, :subscriber).find_by_confirmation_code params[:confirmation_code]
+    page = list.page
+    @subscriber = list.subscriber
+
+    if @subscriber.subscribed_to_page page
+      flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
+    end
+
     redirect_to root_path
   end
 
   def show_step
   end
 end
+
