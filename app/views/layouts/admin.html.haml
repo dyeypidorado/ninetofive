@@ -36,14 +36,16 @@
   / content-wrap
   .content-wrap
     / about us
-    - flash.each do |k,v|
-      = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
     - if admin_signed_in?
       %nav#account_lists.clearfix
         %ul
           %li= link_to "Home", admin_root_path
           %li= link_to "Static Pages", admin_static_pages_path
           %li= link_to "Products", [:admin, :products]
+          %li= link_to "Affiliates", [:admin, :affiliates]
+
+    - flash.each do |k,v|
+      = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
 
     %section#about-us.clearfix
       = yield

@@ -29,20 +29,15 @@
       %nav
         %ul
           - if admin_signed_in?
-            %li= link_to "Home", admin_root_path
-            - Product.all.each do |p|
-              %li= link_to p.name, [:admin, p]
-            %li= link_to 'New Product', new_admin_product_path
+            %li= link_to "Dashboard", admin_root_path
           - else
             %li= link_to "Home", root_path
-            - Product.all.each do |p|
-              %li= link_to p.name, p
   / content-wrap
   .content-wrap
     / about us
+    %nav#inline_nav= yield(:inline_nav)
     - flash.each do |k,v|
       = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
-    %nav#inline_nav= yield(:inline_nav)
     %section#about-us.clearfix
       = yield
       %aside= yield(:aside)
