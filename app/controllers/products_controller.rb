@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   def show
     @product = Product.first unless params[:id]
     @product = Product.find(params[:id]) if params[:id]
-    @subscriber = @product.subscribers_list(@product.pages.first).build
+    @page = @product.squeeze_page
+    @subscriber = @page.subscribers.build
   end
 end
+
