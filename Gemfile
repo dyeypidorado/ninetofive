@@ -14,6 +14,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '9d7bfc0ffbdd36cd1777a8e439a424aefda953d0'
 gem 'responders'
+#gem 'icontact-api', '~> 0.3.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -24,4 +25,3 @@ end
 group :development do
   gem 'pry'
 end
-
