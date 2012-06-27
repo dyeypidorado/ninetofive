@@ -1,5 +1,6 @@
 body{
 background-image:image-url('grafx/bg_stripe.gif');
+font-family: "Open Sans", sans-serif;
 }
 
 div.container_16{
@@ -235,3 +236,9 @@ font-weight:300;
 color:#f7bd31;
 font-size:15px;
 }
+
+#thirdrow { height: 360px; }
+#new_subscriber input {
+  margin-bottom: 10px;
+}
+

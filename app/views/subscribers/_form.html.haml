@@ -7,6 +7,9 @@
         - @subscriber.errors.full_messages.each do |msg|
           %li= msg
 
+  = f.label :name
   = f.text_field :name, :placeholder=> "Name"
+  = f.label :email
   = f.text_field :email, :placeholder=> "E-mail"
   = f.submit "I want to sign up!"
+
