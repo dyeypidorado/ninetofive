@@ -1,7 +1,9 @@
 .grid_16#thirdrow
   .grid_11.alpha#video
     :plain
-      <iframe width="650" height="360" src="http://www.youtube.com/embed/uP4nRTTfXqo?autoplay=#{Rails.env.production? ? 1 : 0}&controls=0" frameborder="0" allowfullscreen></iframe>
+      <iframe width="640" height="310" src="http://www.youtube.com/embed/uP4nRTTfXqo?autoplay=#{Rails.env.production? ? 1 : 0}&controls=0" frameborder="0" allowfullscreen></iframe>
+    :css
+      #thirdrow { height: 310px; }
 
   .grid_5.omega#topsignup
     %h1<
@@ -23,3 +25,4 @@
     %em= 'I became financially free, no more need for a 9 to 5 job.'
 
 .clear
+
