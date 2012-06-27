@@ -1,10 +1,25 @@
-%h1= @page.title
-= raw @page.content
+.grid_16#thirdrow
+  .grid_11.alpha#video
+    :plain
+      <iframe width="650" height="360" src="http://www.youtube.com/embed/uP4nRTTfXqo?autoplay=#{Rails.env.production? ? 1 : 0}&controls=0" frameborder="0" allowfullscreen></iframe>
 
-/
-  :plain
-    <iframe width="640" height="360" src="http://www.youtube.com/embed/uP4nRTTfXqo?autoplay=#{Rails.env.production? ? 1 : 0}&controls=0" frameborder="0" allowfullscreen></iframe>
+  .grid_5.omega#topsignup
+    %h1<
+      Retire young
+      %span and
+      retire rich
+    %hr
+    %h3 Sign up now!
+    =render "subscribers/form"
 
-- content_for :aside do
-  = render "subscribers/form"
+.clear
 
+.grid_16#intro
+  %p
+    %span I'm Leila Hernandez,
+    = 'and I was holding a full time 9 to 5 job, having had key positions in various multinational companies here and abroad, when I decided'
+    %em= "I didn't want to grow old working and retire poor."
+    = 'So I was a 9 to 5 Millionaire for several years, then one day, I made it.'
+    %em= 'I became financially free, no more need for a 9 to 5 job.'
+
+.clear

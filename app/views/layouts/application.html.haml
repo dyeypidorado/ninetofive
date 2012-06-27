@@ -15,44 +15,58 @@
       %script{:src => "http://html5shim.googlecode.com/svn/trunk/html5.js" }
     %script{:src => "http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"}
 
+    %link{"href" => "http://fonts.googleapis.com/css?family=Dosis:200,400,600,800", "rel" => "stylesheet", "type" => "text/css"}
+    %link{"href" => "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700", "rel" => "stylesheet", "type" => "text/css"}
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,800,700' rel='stylesheet' type='text/css'>
+
     = stylesheet_link_tag "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
 %body
-  #header-wrap
-    %header
-      %hgroup
-        %h1
-          = link_to "The 9 to 5 Millionaire", root_path
-        %h3 Journey from a 9 to 5 job to financial freedom.
-      %nav
+  %div.container_16#container
+    / first row
+    %div.grid_10#nav
+      %ul
+        - if admin_signed_in?
+          %li= link_to "Dashboard", admin_root_path
+        - else
+          %li= link_to "Home", root_path
+      /
+        %li= link_to "Book", "#"
+        %li= link_to "Products", "#"
+        %li= link_to "Seminars", "#"
+        %li= link_to "Events", "#"
+        %li= link_to "Contact", "#"
+    /
+      %div.grid_6#social
         %ul
-          - if admin_signed_in?
-            %li= link_to "Dashboard", admin_root_path
-          - else
-            %li= link_to "Home", root_path
-  / content-wrap
-  .content-wrap
-    / about us
+          %li.fb= link_to "Like on FB", "#"
+          %li.youtube= link_to "Youtube", "#"
+          %li.email= link_to "Email", "#"
+          %li.connect= link_to "Connect", "#"
+    %div.clear
+
+    /next row
+    %div.grid_16
+      %img{:src => asset_path('grafx/headbanner.jpg'), :alt => "9-5 Millionaire"}
+
+    %div.clear
+
+    /third row
     %nav#inline_nav= yield(:inline_nav)
     - flash.each do |k,v|
       = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
-    %section#about-us.clearfix
-      = yield
-      %aside= yield(:aside)
+    = yield
 
-  / footer
-  %footer
-    .footer-content
-      %ul.footer-menu
+    /footer
+    %div.grid_16#footer
+      %ul
         %li= link_to "Home", root_path
         - if admin_signed_in?
           %li= link_to "Log out", destroy_admin_session_path, :method => :delete
         - else
           %li= link_to "Log in", new_admin_session_path
-      %p.footer-text
-        The 9 to 5 Millionaire &copy; 2012
-        Designed by
-        %a{:href => "http://www.styleshout.com/"} Styleshout
-
+      %ul
+        %p The 9 to 5 Millionaire. All Rights Reserved, 2012.

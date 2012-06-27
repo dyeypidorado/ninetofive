@@ -8,9 +8,9 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require pageone/style
- *= require pageone/nivo_slider
- *= require pageone/fancybox
+ *= require homepagedraft/styles/960
+ *= require homepagedraft/styles/reset
+ *= require homepagedraft/styles/milstyle
  *= require main
  *= require_self
  */
