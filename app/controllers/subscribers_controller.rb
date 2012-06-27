@@ -11,14 +11,14 @@ class SubscribersController < ApplicationController
   def create
     @page = Page.find_by_id params[:page_id]
     @subscriber = @page.subscribers.build params[:subscriber]
-    @affiliate = Affiliate.find params[:affiliate][:id]
+    @affiliate = Affiliate.find params[:affiliate][:id] if params[:affiliate][:id].present?
 
     if @subscriber.save
       @subscriber.pages << @page
 
       if @affiliate
         list = @subscriber.lists.find_by_page_id @page.id
-        list.affiliate = @affiliate
+        list.affiliate = @affiliate if @affiliate
         list.save
       end
 
@@ -48,4 +48,3 @@ class SubscribersController < ApplicationController
   def show_step
   end
 end
-

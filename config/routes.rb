@@ -13,6 +13,7 @@ Ninetofive::Application.routes.draw do
   devise_for :admins
 
   namespace :admin do
+    resources :subscribers
     resources :static_pages
     resources :products do
       resources :pages
@@ -28,4 +29,3 @@ Ninetofive::Application.routes.draw do
 
   root :to => 'products#show'
 end
-

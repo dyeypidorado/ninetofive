@@ -2,8 +2,12 @@ class Admin::SubscribersController < Admin::BaseController
   before_filter :set_madmimi, :only => [:destroy]
 
   def index
-    @product = Product.find(params[:product_id]);
-    @subscribers = @product.subscribers.all
+    if params[:product_id]
+      @product = Product.find(params[:product_id])
+      @subscribers = @product.subscribers.all
+    else
+      @subscribers = Subscriber.all
+    end
   end
 
   def new

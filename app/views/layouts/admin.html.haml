@@ -43,6 +43,7 @@
           %li= link_to "Static Pages", admin_static_pages_path
           %li= link_to "Products", [:admin, :products]
           %li= link_to "Affiliates", [:admin, :affiliates]
+          %li= link_to "Subscribers", [:admin, :subscribers]
 
     - flash.each do |k,v|
       = content_tag :div, v.html_safe, :class => "flash #{k} clearfix"
@@ -57,4 +58,3 @@
     .footer-content
       %p.footer-text
         The 9 to 5 Millionaire &copy; 2012
-
