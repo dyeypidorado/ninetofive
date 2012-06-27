@@ -25,10 +25,9 @@ class Subscriber < ActiveRecord::Base
 
   def subscribed_to_page(page)
     if lists.find_by_page_id(page.id).set_subscribed
-      @mimi = Mimi::set_madmimi
-      @mimi.add_to_list(self.email, page.listname)
+      # @mimi = Mimi::set_madmimi
+      # @mimi.add_to_list(self.email, page.listname)
     end
   end
 
 end
-
