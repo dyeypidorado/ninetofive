@@ -23,8 +23,7 @@ class SubscribersController < ApplicationController
       end
 
       ConfirmationMailer.send_confirmation(@page, @subscriber).deliver
-      flash[:notice]  = "Thanks for signing up! We've sent you a confirmation email so we can check that your email do exist (and that you control your email)."
-      flash[:notice] += " We hate spam as much as you do!"
+      flash[:notice]  = "Thanks for signing up! We sent a confirmation mail. Please check your mailbox."
       # redirect_to step_product_subscriber_path(@product.id, @subscriber.id)
       redirect_to root_path
     else
@@ -48,3 +47,4 @@ class SubscribersController < ApplicationController
   def show_step
   end
 end
+

@@ -1,5 +1,11 @@
 %p
-  = "Hello #{@subscriber.name}. Click "
+  = "Hello #{@subscriber.name}!  Thanks for signing up!  Just click "
   = link_to "here", confirmation_url(@code)
-  = " to confirm your subscription to "
+  = "  to confirm your subscription and we are good to go!"
+
+%p
+  If the above link does not work, just copy and paste the following to your
+  browser to confirm your email.
+
+%p= confirmation_url(@code)
 
