@@ -7,7 +7,7 @@ pages.each do |pagename|
   StaticPage.create name: pagename
 end
 
-categories = ["Books", "Products", "Seminars"]
+categories = ["Books", "Merchandise", "Seminars"]
 categories.each do |category|
   Category.create name: category
 end
