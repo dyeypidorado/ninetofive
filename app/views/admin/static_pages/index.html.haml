@@ -1,25 +1,13 @@
-%h1 Listing static_pages
+%h1 List of Static Pages
 
 %table
   %tr
-    %th Region1
-    %th Region2
-    %th Region3
-    %th Region4
-    %th Region5
-    %th
-    %th
-    %th
+    %th Page Name
+    %th Action
 
   - @static_pages.each do |static_page|
     %tr
-      %td= static_page.region1
-      %td= static_page.region2
-      %td= static_page.region3
-      %td= static_page.region4
-      %td= static_page.region5
-      %td= link_to 'Show', static_page
-      %td= link_to 'Edit', edit_static_page_path(static_page)
+      %td= link_to static_page.name , static_page
       %td= link_to 'Destroy', static_page, :confirm => 'Are you sure?', :method => :delete
 
 %br
