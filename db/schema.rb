@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120703030807) do
     t.integer  "subscriber_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.integer  "status_code",       :default => 1
+    t.integer  "status_code",       :default => 0
     t.string   "confirmation_code"
     t.integer  "affiliate_id"
   end
