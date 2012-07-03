@@ -1,14 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-
 password = 'admin_9to5'
+
 Admin.create(email: 'admin@9to5mil.com', password: password, :password_confirmation => password)
-Product.create name: "The 9 to 5 Millionaire Book"
+
+pages = ["Homepage", "Events", "Contact"]
+pages.each do |pagename|
+  StaticPage.create name: pagename
+end
+
+categories = ["Books", "Products", "Seminars"]
+categories.each do |category|
+  Category.create name: category
+end
+
+
+book = Category.find_by_name "Books"
+book.products.create name: "The 9 to 5 Millionaire Book"
 
 Affiliate.create(name: "Affiliate1")
 Affiliate.create(name: "Affiliate2")
