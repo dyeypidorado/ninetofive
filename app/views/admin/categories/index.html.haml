@@ -1,0 +1,3 @@
+%h1 Product Categories
+- @categories.each do |category|
+    %ul= link_to category.name, [:admin, category]
