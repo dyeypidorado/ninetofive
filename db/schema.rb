@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624145711) do
+ActiveRecord::Schema.define(:version => 20120703030807) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,12 +38,18 @@ ActiveRecord::Schema.define(:version => 20120624145711) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "lists", :force => true do |t|
     t.integer  "page_id"
     t.integer  "subscriber_id"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.integer  "status_code",       :default => 0
+    t.integer  "status_code",       :default => 1
     t.string   "confirmation_code"
     t.integer  "affiliate_id"
   end
@@ -63,9 +69,10 @@ ActiveRecord::Schema.define(:version => 20120624145711) do
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "slug"
+    t.integer  "category_id"
   end
 
   create_table "referrals", :force => true do |t|
@@ -83,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20120624145711) do
     t.string   "region5"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   create_table "statuses", :force => true do |t|
