@@ -1,7 +1,10 @@
 %h1 #{@product.name}'s pages
 %table.pretty
   %tr
+    %th ID
     %th Name
   - for page in @pages
     = render page, template: :table_row
 
+%br
+= link_to 'Add New Page', new_admin_product_page_path(@product.id)

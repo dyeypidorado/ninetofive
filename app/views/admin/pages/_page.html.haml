@@ -1,4 +1,5 @@
 - if template == :table_row
   %tr
+    %td= link_to page.id, [:admin, @product, page]
     %td= link_to page.title, [:admin, @product, page]
 
