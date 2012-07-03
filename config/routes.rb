@@ -22,6 +22,10 @@ Ninetofive::Application.routes.draw do
     resources :affiliates
   end
 
+  resources :categories, :only => [:show] do
+    resources :products, :only => [:index]
+  end
+
   resources :products, :only => [:show, :index] do
   end
 

@@ -1,2 +1,8 @@
-%h1 Products#index
-%p Find me in app/views/products/index.html.haml
+%h1 #{@category.name}
+
+%li
+  - if @products.empty?
+    = "Soon."
+  - else 
+    - @products.each do |product| 
+      %ul= link_to product.name, product

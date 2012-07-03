@@ -31,10 +31,9 @@
           %li= link_to "Dashboard", admin_root_path
         - else
           %li= link_to "Home", root_path
-      /
-        %li= link_to "Book", "#"
-        %li= link_to "Products", "#"
-        %li= link_to "Seminars", "#"
+        %li= link_to "Book", Category.find_by_name("Books")
+        %li= link_to "Products", Category.find_by_name("Products")
+        %li= link_to "Seminars", Category.find_by_name("Seminars")
         %li= link_to "Events", "#"
         %li= link_to "Contact", "#"
     /
