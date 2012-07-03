@@ -5,4 +5,6 @@
     %th Actions
   - for product in @products
     = render product, template: :table_row
+%br
+= link_to "Add New #{@category.name.singularize}", [:new, :admin, @category, :product]
 

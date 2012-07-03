@@ -15,6 +15,9 @@ Ninetofive::Application.routes.draw do
   namespace :admin do
     resources :subscribers
     resources :static_pages
+    resources :categories, :only => [:index, :show] do
+      resources :products
+    end
     resources :products do
       resources :pages
       resources :subscribers
@@ -29,7 +32,7 @@ Ninetofive::Application.routes.draw do
   resources :products, :only => [:show, :index] do
   end
 
-  match '/dashboard' => 'Admin::products#index', :as => :admin_root
+  match '/dashboard' => 'Admin::categories#index', :as => :admin_root
 
   root :to => 'products#show'
 end
