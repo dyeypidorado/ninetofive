@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
   def show
-    @homepage = StaticPage.first
+    @static_page = StaticPage.find(params[:id])
   end
 end
