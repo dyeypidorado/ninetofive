@@ -2,7 +2,7 @@ password = 'admin_9to5'
 
 Admin.create(email: 'admin@9to5mil.com', password: password, :password_confirmation => password)
 
-pages = ["Homepage", "Events", "Contact"]
+pages = ["Homepage", "News", "Contact"]
 pages.each do |pagename|
   StaticPage.create name: pagename
 end
