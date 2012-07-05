@@ -1,38 +1,32 @@
 class Admin::StaticPagesController < Admin::BaseController
-  before_filter :authenticate_admin!
+  before_filter :find_page, only: [:show, :update]
+  layout :resolve_layout
+
+  def resolve_layout
+    action_name == 'show' ? 'application' : 'admin'
+  end
+
   def index
     @static_pages = StaticPage.all
   end
 
   def show
-    @static_page = StaticPage.find(params[:id])
   end
 
   def new
-    @static_page = StaticPage.new
-  end
-
-  def edit
-    @static_page = StaticPage.find(params[:id])
-  end
-
-  def create
-    @static_page = StaticPage.new(params[:static_page])
-    if @static_page.save
-      redirect_to @static_page, notice: 'Static page was successfully created.'
-    else
-      render action: "new"
-    end
+    @static_page = StaticPage.create
+    redirect_to [:admin, @static_page]
   end
 
   def update
-    @static_page = StaticPage.find(params[:id])
+    @static_page.region1 = params[:content][:region_one][:value]
+    @static_page.region2 = params[:content][:region_two][:value]
+    @static_page.region3 = params[:content][:region_three][:value]
+    @static_page.region4 = params[:content][:region_four][:value]
+    @static_page.region5 = params[:content][:region_five][:value]
 
-    if @static_page.update_attributes(params[:static_page])
-      redirect_to @static_page, notice: 'Static page was successfully updated.'
-    else
-      render action: "edit"
-    end
+    @static_page.save!
+    render :text => ""
   end
 
   def destroy
@@ -40,5 +34,10 @@ class Admin::StaticPagesController < Admin::BaseController
     @static_page.destroy
 
     redirect_to static_pages_url
+  end
+
+  protected
+  def find_page
+    @static_page = StaticPage.find params[:id]
   end
 end

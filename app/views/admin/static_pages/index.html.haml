@@ -7,7 +7,7 @@
 
   - @static_pages.each do |static_page|
     %tr
-      %td= link_to static_page.name , static_page
+      %td= link_to static_page.name , [:admin, static_page]
       %td= link_to 'Destroy', static_page, :confirm => 'Are you sure?', :method => :delete
 
 %br
