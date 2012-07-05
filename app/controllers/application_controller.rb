@@ -18,10 +18,10 @@ class ApplicationController < ActionController::Base
       Referral.create(code: code, link: request.url)
       @affiliate = Affiliate.find_by_code code
     end
+    @fb = params[:fb]
   end
 
   def get_source
     @source = Subscriber.find_by_email params[:source] if params[:source]
   end
 end
-

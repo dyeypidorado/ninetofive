@@ -3,9 +3,11 @@
     %th Name
     %th Email
     %th Referrer
+    %th From Facebook
 
   - @subscribers.each do |subscriber|
     %tr
       %td= subscriber.name
       %td= subscriber.email
       %td= subscriber.lists.first.affiliate.name if subscriber.lists.first.affiliate
+      %td= subscriber.lists.first.is_fb

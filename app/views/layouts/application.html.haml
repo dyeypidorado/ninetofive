@@ -34,7 +34,7 @@
         %li= link_to "Book", Category.find_by_name("Books")
         %li= link_to "Merchandise", Category.find_by_name("Products")
         %li= link_to "Seminars", Category.find_by_name("Seminars")
-        %li= link_to "Events", "#"
+        %li= link_to "Events", StaticPage.find_by_name("Events")
         %li= link_to "Contact", "#"
     /
       %div.grid_6#social
@@ -67,4 +67,3 @@
           %li= link_to "Log in", new_admin_session_path
       %ul
         %p The 9 to 5 Millionaire. All Rights Reserved, 2012.
-

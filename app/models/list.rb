@@ -1,5 +1,6 @@
 class List < ActiveRecord::Base
   attr_accessible :status_code, :confirmation_code
+  attr_accessible :is_fb
 
   belongs_to :page
   belongs_to :subscriber
@@ -39,4 +40,3 @@ class List < ActiveRecord::Base
     self.save
   end
 end
-

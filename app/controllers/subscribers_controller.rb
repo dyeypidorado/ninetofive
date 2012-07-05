@@ -16,11 +16,17 @@ class SubscribersController < ApplicationController
     if @subscriber.save
       @subscriber.pages << @page
 
+      list = @subscriber.lists.find_by_page_id @page.id
       if @affiliate
-        list = @subscriber.lists.find_by_page_id @page.id
         list.affiliate = @affiliate if @affiliate
-        list.save
       end
+
+      if params[:fb].present?
+        list.is_fb = true
+      end
+      list.save
+
+      # if @campaign, get first step of campaign, associate to list
 
       ConfirmationMailer.send_confirmation(@page, @subscriber).deliver
       flash[:notice]  = "Thanks for signing up! We sent a confirmation mail. Please check your mailbox."
@@ -41,10 +47,15 @@ class SubscribersController < ApplicationController
       flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
     end
 
+    if list.is_fb
+      @mimi = Mimi::set_madmimi
+      @mimi.add_to_list(@subscriber.email, "Facebook")
+      flash[:success] = "Thanks! We've just sent an exclusive offer for Facebook subscribers. :)"
+    end
+
     redirect_to root_path
   end
 
   def show_step
   end
 end
-
