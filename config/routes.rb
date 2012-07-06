@@ -34,5 +34,5 @@ Ninetofive::Application.routes.draw do
 
   match '/dashboard' => 'Admin::categories#index', :as => :admin_root
 
-  root :to => 'products#show'
+  root :to => 'static_pages#homepage'
 end
