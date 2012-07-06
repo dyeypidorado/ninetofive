@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120705090827) do
+ActiveRecord::Schema.define(:version => 20120706142543) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -84,14 +84,14 @@ ActiveRecord::Schema.define(:version => 20120705090827) do
   end
 
   create_table "static_pages", :force => true do |t|
-    t.string   "region1"
-    t.string   "region2"
-    t.string   "region3"
-    t.string   "region4"
-    t.string   "region5"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "name"
+    t.text     "region1"
+    t.text     "region2"
+    t.text     "region3"
+    t.text     "region4"
+    t.text     "region5"
   end
 
   create_table "statuses", :force => true do |t|
