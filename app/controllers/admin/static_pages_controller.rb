@@ -11,6 +11,14 @@ class Admin::StaticPagesController < Admin::BaseController
   end
 
   def show
+    if @static_page.name == 'Homepage'
+      @product = Product.first unless params[:id]
+      @product = Product.find(params[:id]) if params[:id]
+      @page = @product.squeeze_page
+      @subscriber = @page.subscribers.build
+
+      render 'homepage'
+    end
   end
 
   def new
