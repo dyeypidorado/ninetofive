@@ -1,22 +1,19 @@
-.grid_16#thirdrow
-  %h1 #{@static_page.name}
-  %p
-    =@static_page.region1
+.grid_16#top_region
+  .mercury-region.grid_11.alpha.main{:'data-mercury' => "full"}= raw @static_page.region1
+  .mercury-region.grid_5.omega.sidebar{:'data-mercury' => "full"}= @static_page.region2
 .clear
 
-.grid_16#intro
-  %p
-    = @static_page.region2
-.clear
+.grid_16#bottom_region
+  .grid_4.alpha
+    %p.mercury-region{:'data-mercury' => "full"}= @static_page.region3
 
-.grid_4
-  %p
-    = @static_page.region3
-.grid_6
-  %p
-    = @static_page.region4
-.grid_6#news
-  %p
-    = @static_page.region5
+  .grid_6
+    %p.mercury-region{:'data-mercury' => "full"}= @static_page.region4
+
+  .grid_6.omega
+    %p.mercury-region{:'data-mercury' => "full"}= @static_page.region5
 
 .clear
+- if current_admin
+  .grid_16#bottomcontent= link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @static_page] }
+
