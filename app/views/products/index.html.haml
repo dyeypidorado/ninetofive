@@ -1,8 +1,10 @@
-%h1 #{@category.name}
+.grid_16
+  %h1 #{@category.name}
 
-%li
-  - if @products.empty?
-    = "Soon."
-  - else 
-    - @products.each do |product| 
-      %ul= link_to product.name, product
+  %ul
+    - if @products.empty?
+      = "Soon."
+    - else
+      - @products.each do |product|
+        %li= link_to product.name, product
+
