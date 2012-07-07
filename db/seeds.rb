@@ -34,3 +34,4 @@ statuses.each do |status|
   Status.create value: status
 end
 =end
+
