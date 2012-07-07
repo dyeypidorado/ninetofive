@@ -1,17 +1,17 @@
 .grid_16#top_region
-  .mercury-region.grid_11.alpha.main{:'data-mercury' => "full"}= raw @static_page.region1
-  .mercury-region.grid_5.omega.sidebar{:'data-mercury' => "full"}= @static_page.region2
+  .mercury-region.grid_11.alpha.main#region_one{:'data-mercury' => "full"}= raw @static_page.region1
+  .mercury-region.grid_5.omega.sidebar#region_two{:'data-mercury' => "full"}= @static_page.region2
 .clear
 
 .grid_16#bottom_region
   .grid_4.alpha
-    %p.mercury-region{:'data-mercury' => "full"}= @static_page.region3
+    %p.mercury-region#region_three{:'data-mercury' => "full"}= @static_page.region3
 
   .grid_6
-    %p.mercury-region{:'data-mercury' => "full"}= @static_page.region4
+    %p.mercury-region#region_four{:'data-mercury' => "full"}= @static_page.region4
 
   .grid_6.omega
-    %p.mercury-region{:'data-mercury' => "full"}= @static_page.region5
+    %p.mercury-region#region_five{:'data-mercury' => "full"}= @static_page.region5
 
 .clear
 - if current_admin
