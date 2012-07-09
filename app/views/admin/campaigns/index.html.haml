@@ -1,0 +1,16 @@
+%h1 List of Campaigns
+%table
+  %tr
+    %th= 'Name'
+    %th= 'Product'
+    %th= 'Action'
+
+  %tr
+    -if @campaigns.nil?
+
+    - else
+      - @campaigns.each do |campaign|
+        %td= campaign.name
+        %td= campaign.product.name
+
+= link_to "New Campaign", [:new, :admin, :campaign]
