@@ -15,6 +15,7 @@ Ninetofive::Application.routes.draw do
   namespace :admin do
     resources :subscribers
     resources :static_pages
+    resources :affiliates
     resources :categories, :only => [:index, :show] do
       resources :products
     end
@@ -22,7 +23,7 @@ Ninetofive::Application.routes.draw do
       resources :pages
       resources :subscribers
     end
-    resources :affiliates
+    resources :campaigns
   end
 
   resources :categories, :only => [:show] do
