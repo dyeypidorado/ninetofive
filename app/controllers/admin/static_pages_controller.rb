@@ -15,8 +15,10 @@ class Admin::StaticPagesController < Admin::BaseController
       @product = Product.first
       @page = @product.squeeze_page
       @subscriber = @page.subscribers.build
+      render template: "static_pages/homepage"
+    else
+      render template: "static_pages/show"
     end
-    render template: "static_pages/show"
   end
 
   def new
