@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707143627) do
+ActiveRecord::Schema.define(:version => 20120709171815) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(:version => 20120707143627) do
     t.string   "code"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "name"
+    t.string   "trigger_code"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "product_id"
   end
 
   create_table "categories", :force => true do |t|
@@ -99,6 +107,15 @@ ActiveRecord::Schema.define(:version => 20120707143627) do
     t.integer  "page_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "steps", :force => true do |t|
+    t.string   "promotion_name"
+    t.integer  "next_id"
+    t.boolean  "is_first"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "campaign_id"
   end
 
   create_table "subscribers", :force => true do |t|
