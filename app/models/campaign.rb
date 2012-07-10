@@ -1,5 +1,5 @@
 class Campaign < ActiveRecord::Base
-  attr_accessible :name, :trigger_code, :steps_attributes
+  attr_accessible :name, :trigger_code, :steps_attributes, :product_id
 
   belongs_to :product
   has_many :steps

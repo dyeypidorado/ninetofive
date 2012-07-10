@@ -14,6 +14,7 @@ class Admin::CampaignsController < Admin::BaseController
   end
 
   def create
-    redirect_to [:admin, ]
+    campaign = Campaign.create(params[:campaign])
+    redirect_to [:admin, :campaigns]
   end
 end
