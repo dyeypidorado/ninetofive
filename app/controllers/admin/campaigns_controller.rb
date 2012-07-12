@@ -17,4 +17,10 @@ class Admin::CampaignsController < Admin::BaseController
     campaign = Campaign.create(params[:campaign])
     redirect_to [:admin, :campaigns]
   end
+
+  def destroy
+    @campaign = Campaign.find(params[:id])
+    @campaign.destroy
+    redirect_to [:admin, :campaigns]
+  end
 end
