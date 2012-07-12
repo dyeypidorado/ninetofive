@@ -19,7 +19,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def show
-    @pages = @product.pages
+    @campaigns = @product.campaigns
     respond_with :admin, @product
   end
 
