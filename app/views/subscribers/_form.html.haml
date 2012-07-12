@@ -1,4 +1,4 @@
-= form_for [@page, @subscriber] do |f|
+= form_for [@product, @subscriber] do |f|
   = hidden_field :affiliate, :id
   = hidden_field_tag :fb, true unless @fb.nil?
   - if @subscriber.errors.any?

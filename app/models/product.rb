@@ -9,7 +9,7 @@ class Product < ActiveRecord::Base
 
   has_many :campaigns
   has_many :lists
-  has_many :subscribers, :through => :list
+  has_many :subscribers, :through => :lists
   has_one :page
 
   validates :name, presence: true

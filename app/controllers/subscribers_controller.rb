@@ -9,8 +9,10 @@ class SubscribersController < ApplicationController
 
   # POST /subscribers
   def create
-    @page = Page.find_by_id params[:page_id]
-    @subscriber = @page.subscribers.build params[:subscriber]
+    #@page = Page.find_by_id params[:page_id]
+    @product = Product.find(params[:product_id])
+    @list = @product.list.create
+    @subscriber = @list.subscribers.build params[:subscriber]
     @affiliate = Affiliate.find params[:affiliate][:id] if params[:affiliate][:id].present?
 
     if @subscriber.save

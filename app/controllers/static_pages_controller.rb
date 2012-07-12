@@ -4,8 +4,7 @@ class StaticPagesController < ApplicationController
   def homepage
     @product = Product.first unless params[:id]
     @product = Product.find(params[:id]) if params[:id]
-    @page = @product.squeeze_page
-    @subscriber = @page.subscribers.build
+    @subscriber = Subscriber.new
     @static_page = StaticPage.find_by_name "Homepage" || build_homepage
   end
 
@@ -26,4 +25,3 @@ So I was a 9 to 5 Millionaire for several years, then one day, I made it.
 <em>I became financially free, no more need for a 9 to 5 job.</em>"
   end
 end
-
