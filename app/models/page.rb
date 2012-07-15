@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :content, :status_code, :title, :page_type
+  attr_accessible :content, :status_code, :title, :page_type, :sidebar
   attr_readonly :link_code
 
   has_one :list
@@ -31,3 +31,4 @@ class Page < ActiveRecord::Base
     @mimi.new_list listname
   end
 end
+
