@@ -1,11 +1,12 @@
 - content_for :inline_nav do
-  = link_to "< Back to Campaign", [:admin, @campaign]
-  = link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @product, @page] }
+  - if current_admin
+    = link_to "< Back to Campaign", [:admin, @campaign]
+    = link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @product, @page] }
 
-%h1.mercury-region#page_title{:'data-mercury' => "simple"} #{raw @page.title}
-
-%div.mercury-region#page_content{:'data-mercury' => "full"}
-  = raw @page.content
+.grid_16#top_region
+  .mercury-region.grid_11.alpha.main#page_content{:'data-mercury' => "full"}= raw @page.content
+  .mercury-region.grid_5.omega.sidebar#sidebar{:'data-mercury' => "full"}= raw @page.sidebar
+.clear
 
 =# button_to_function "Show Link", "alert( 'Copy this link and paste to your emails: #{request.url.gsub '/admin', ''}/(email)' )", id: "show_link"
 

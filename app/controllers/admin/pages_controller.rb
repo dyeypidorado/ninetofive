@@ -25,17 +25,18 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def update
-    @page.title = params[:content][:page_title][:value]
     @page.content = params[:content][:page_content][:value]
-    @page.save!
-    render :text => ""
+    @page.content = params[:content][:sidebar][:value]
+    if @page.save
+      redirect_to [:admin, @page]
+    end
   end
 
   protected
   def find_product
     @product = Product.find params[:product_id]
   end
-  
+
   def find_campaign
     @campaign = Campaign.find params[:campaign_id]
   end
