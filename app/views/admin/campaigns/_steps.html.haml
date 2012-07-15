@@ -1,5 +1,7 @@
 %p.fields
   = f.label :promotion_name, "Madmimi Promotion Name"
+  = link_to "(What's this?)", root_url + image_path('helpers/promotion_names.png'), target: "_blank", class: "helptext lightbox", title: "This is the name of the promotion that you'll be sending when someone reaches this step. The promotion names can be found in your Madmimi account as above."
   = f.text_field :promotion_name
   = f.hidden_field :_destroy
   = link_to_remove_fields "remove", f
+
