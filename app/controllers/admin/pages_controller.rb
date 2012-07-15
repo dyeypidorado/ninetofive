@@ -1,5 +1,6 @@
 class Admin::PagesController < Admin::BaseController
-  before_filter :find_product
+  #before_filter :find_product
+  before_filter :find_campaign, only: [:show, :update]
   before_filter :find_page, only: [:show, :update]
   layout :resolve_layout
 
@@ -8,7 +9,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def index
-    @pages = @product.pages
+    #@pages = Pages.includes
   end
 
   def new
@@ -34,9 +35,13 @@ class Admin::PagesController < Admin::BaseController
   def find_product
     @product = Product.find params[:product_id]
   end
+  
+  def find_campaign
+    @campaign = Campaign.find params[:campaign_id]
+  end
 
   def find_page
-    @page = @product.pages.find params[:id]
+    @page = Page.find params[:id]
   end
 end
 
