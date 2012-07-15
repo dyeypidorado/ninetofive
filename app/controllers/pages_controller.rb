@@ -1,11 +1,17 @@
 class PagesController < ApplicationController
   def show
-    @page = Page.find_by_link_code(params[:page_id]) or Page.find_by_link_code(params[:id])
+    @page = fetch_page
+    redirect_to root_path, alert: "Page not found" and return if @page.nil?
     @product = @page.product
 
     if @source
       @subscriber = Subscriber.find_by_email(@source)
     end
+  end
+
+  protected
+  def fetch_page
+    Page.find_by_link_code(params[:page_id]) || Page.find_by_link_code(params[:id])
   end
 end
 
