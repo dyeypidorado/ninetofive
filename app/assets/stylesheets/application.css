@@ -11,6 +11,8 @@
  *= require homepagedraft/styles/960
  *= require homepagedraft/styles/reset
  *= require homepagedraft/styles/milstyle
+ *= require pageone/fancybox
  *= require main
  *= require_self
  */
+
