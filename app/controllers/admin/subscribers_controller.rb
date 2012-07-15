@@ -4,9 +4,9 @@ class Admin::SubscribersController < Admin::BaseController
   def index
     if params[:product_id]
       @product = Product.find(params[:product_id])
-      @subscribers = @product.subscribers.all
+      @subscribers = @product.subscribers.includes(:lists)
     else
-      @subscribers = Subscriber.all
+      @subscribers = Subscriber.includes(:lists).all
     end
   end
 

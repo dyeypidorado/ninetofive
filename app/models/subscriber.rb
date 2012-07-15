@@ -5,7 +5,6 @@ class Subscriber < ActiveRecord::Base
   friendly_id :name, use: :slugged
 
   has_many :lists
-  has_many :pages, :through => :lists
 
   validates :email,
             :presence => true,

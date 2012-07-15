@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120707143627) do
+ActiveRecord::Schema.define(:version => 20120715194733) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(:version => 20120707143627) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "campaigns", :force => true do |t|
+    t.string   "name"
+    t.string   "trigger_code"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "product_id"
+  end
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -53,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120707143627) do
     t.string   "confirmation_code"
     t.integer  "affiliate_id"
     t.boolean  "is_fb"
+    t.integer  "product_id"
   end
 
   add_index "lists", ["affiliate_id"], :name => "index_lists_on_affiliate_id"
@@ -66,14 +75,20 @@ ActiveRecord::Schema.define(:version => 20120707143627) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "page_type",   :default => 0
+    t.integer  "step_id"
+    t.text     "sidebar"
   end
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "slug"
     t.integer  "category_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "referrals", :force => true do |t|
@@ -99,6 +114,15 @@ ActiveRecord::Schema.define(:version => 20120707143627) do
     t.integer  "page_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "steps", :force => true do |t|
+    t.string   "promotion_name"
+    t.integer  "next_id"
+    t.boolean  "is_first"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "campaign_id"
   end
 
   create_table "subscribers", :force => true do |t|

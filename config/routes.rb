@@ -1,12 +1,5 @@
 Ninetofive::Application.routes.draw do
-  resources :static_pages, only: [:show]
   get "confirm_subscription/:confirmation_code" => "subscribers#confirm_subscription", as: :confirmation
-
-  resources :pages, only: [:show] do
-    resources :subscribers do
-      get "step(/:step_code)" => "subscribers#show_step", :on => :member, :as => :step
-    end
-  end
 
   mount Mercury::Engine => '/'
 
@@ -15,15 +8,29 @@ Ninetofive::Application.routes.draw do
   namespace :admin do
     resources :subscribers
     resources :static_pages
+    resources :affiliates
     resources :categories, :only => [:index, :show] do
       resources :products
     end
     resources :products do
-      resources :pages
       resources :subscribers
+      resources :campaigns
     end
-    resources :affiliates
+    resources :pages
+    resources :campaigns do 
+      resources :pages
+    end
   end
+
+  resources :pages, only: [:show] do
+    resources :subscribers do
+      get "step(/:step_code)" => "subscribers#show_step", :on => :member, :as => :step
+    end
+  end
+  resources :products do
+    resources :subscribers
+  end
+  resources :static_pages, only: [:show]
 
   resources :categories, :only => [:show] do
     resources :products, :only => [:index]

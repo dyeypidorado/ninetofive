@@ -1,13 +1,14 @@
 class Page < ActiveRecord::Base
-  attr_accessible :content, :status_code, :title, :page_type
+  attr_accessible :content, :status_code, :title, :page_type, :sidebar
   attr_readonly :link_code
 
   has_one :list
   has_many :subscribers, :through => :list
   belongs_to :product
+  belongs_to :step
 
   before_create :generate_code
-  after_create :create_mimi_list
+  #after_create :create_mimi_list
 
   def pagetype
     case page_type

@@ -1,10 +1,9 @@
-%h1 Welcome to 9to5 Millionaire
+%h1 List of Products
 %table.pretty
   %tr
     %th Name
+    %th Category
     %th Actions
   - for product in @products
     = render product, template: :table_row
 %br
-= link_to "Add New #{@category.name.singularize}", [:new, :admin, @category, :product]
-
