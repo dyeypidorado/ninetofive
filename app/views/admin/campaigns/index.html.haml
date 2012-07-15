@@ -1,0 +1,16 @@
+%h1 List of Campaigns
+%table
+  %tr
+    %th= 'Name'
+    %th= 'Product'
+    %th= 'Action'
+
+  -if @campaigns.nil?
+  - else
+    - @campaigns.each do |campaign|
+      %tr
+        %td= campaign.name
+        %td= campaign.product.name
+        %td= link_to 'Destroy', [:admin, campaign], :confirm => 'Are you sure?', :method => :delete
+
+= link_to "New Campaign", [:new, :admin, :campaign]

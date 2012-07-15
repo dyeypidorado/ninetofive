@@ -12,12 +12,8 @@ class Admin::StaticPagesController < Admin::BaseController
 
   def show
     if @static_page.name == 'Homepage'
+      @subscriber = Subscriber.new
       @product = Product.first
-      @page = @product.squeeze_page
-      @subscriber = @page.subscribers.build
-      render template: "static_pages/homepage"
-    else
-      render template: "static_pages/show"
     end
   end
 
@@ -49,4 +45,3 @@ class Admin::StaticPagesController < Admin::BaseController
     @static_page = StaticPage.find_by_id params[:id]
   end
 end
-

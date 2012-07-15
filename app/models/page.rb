@@ -5,9 +5,10 @@ class Page < ActiveRecord::Base
   has_one :list
   has_many :subscribers, :through => :list
   belongs_to :product
+  belongs_to :step
 
   before_create :generate_code
-  after_create :create_mimi_list
+  #after_create :create_mimi_list
 
   def pagetype
     case page_type
@@ -30,4 +31,3 @@ class Page < ActiveRecord::Base
     @mimi.new_list listname
   end
 end
-

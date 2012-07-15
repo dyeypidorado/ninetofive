@@ -9,5 +9,5 @@
     %tr
       %td= subscriber.name
       %td= subscriber.email
-      %td= subscriber.lists.first.affiliate.name if subscriber.lists.first.affiliate
-      %td= subscriber.lists.first.is_fb
+      %td= subscriber.lists.first.affiliate.name unless subscriber.lists.empty? || subscriber.lists.first.affiliate.nil?
+      %td= subscriber.lists.first.is_fb unless subscriber.lists.empty?

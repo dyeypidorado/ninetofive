@@ -1,0 +1,15 @@
+= form_for [:admin, @campaign] do |f|
+  = f.label :name
+  = f.text_field :name
+  %br
+  = f.label :product_id, "Product"
+  = f.select(:product_id, @products.collect {|p| [p.name, p.id] })
+  %h3 Steps
+  = f.fields_for :steps do |builder|
+    = render "steps", :f => builder
+  .add_step
+    = link_to_add_fields "Add Steps", f, :steps
+
+  %br
+  %br
+  = f.submit "Submit"

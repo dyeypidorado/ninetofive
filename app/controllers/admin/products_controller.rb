@@ -1,10 +1,10 @@
 class Admin::ProductsController < Admin::BaseController
   before_filter :set_madmimi, :only => [:create]
-  before_filter :get_category
+  before_filter :get_category, only: [:new, :create, :show, :edit, :update, :destroy]
   before_filter :get_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = @category.products.all
+    @products = Product.includes(:category)
     respond_with :admin, @products
   end
 
@@ -19,7 +19,7 @@ class Admin::ProductsController < Admin::BaseController
   end
 
   def show
-    @pages = @product.pages
+    @campaigns = @product.campaigns
     respond_with :admin, @product
   end
 
@@ -40,7 +40,7 @@ class Admin::ProductsController < Admin::BaseController
 
   protected
   def get_category
-    @category = Category.find(params[:category_id])  
+    @category = Category.find(params[:category_id])
   end
 
   def get_product
@@ -48,4 +48,3 @@ class Admin::ProductsController < Admin::BaseController
   end
 
 end
-

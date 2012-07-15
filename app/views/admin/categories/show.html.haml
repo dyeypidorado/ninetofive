@@ -1,0 +1,5 @@
+%h1 List of #{@category.name}
+
+%ol
+  - @category.products.each do |product|
+    %li= link_to product.name, [:admin, @category, product]

@@ -9,26 +9,25 @@ class SubscribersController < ApplicationController
 
   # POST /subscribers
   def create
-    @page = Page.find_by_id params[:page_id]
-    @subscriber = @page.subscribers.build params[:subscriber]
+    #@page = Page.find_by_id params[:page_id]
+    @product = Product.find(params[:product_id])
+    @list = @product.lists.create
+    @subscriber = Subscriber.create params[:subscriber]
     @affiliate = Affiliate.find params[:affiliate][:id] if params[:affiliate][:id].present?
 
     if @subscriber.save
-      @subscriber.pages << @page
-
-      list = @subscriber.lists.find_by_page_id @page.id
       if @affiliate
-        list.affiliate = @affiliate if @affiliate
+        @list.affiliate = @affiliate if @affiliate
       end
 
       if params[:fb].present?
-        list.is_fb = true
+        @list.is_fb = true
       end
-      list.save
+      @list.save
 
       # if @campaign, get first step of campaign, associate to list
 
-      ConfirmationMailer.send_confirmation(@page, @subscriber).deliver
+      ConfirmationMailer.send_confirmation(@list, @subscriber).deliver
       flash[:notice]  = "Thanks for signing up! We sent a confirmation mail. Please check your mailbox."
       # redirect_to step_product_subscriber_path(@product.id, @subscriber.id)
       redirect_to root_path
@@ -39,11 +38,10 @@ class SubscribersController < ApplicationController
 
   # Confirm subscription to page
   def confirm_subscription
-    list = List.includes(:page, :subscriber).find_by_confirmation_code params[:confirmation_code]
-    page = list.page
+    list = List.includes(:subscriber).find_by_confirmation_code params[:confirmation_code]
     @subscriber = list.subscriber
 
-    if @subscriber.subscribed_to_page page
+    if !@subscriber.nil?
       flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
     end
 
