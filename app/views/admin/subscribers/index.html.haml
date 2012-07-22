@@ -2,12 +2,15 @@
   %tr
     %th Name
     %th Email
+    %th Step/ Promotion Name
     %th Referrer
     %th From Facebook
 
-  - @subscribers.each do |subscriber|
+  - @subs.each do |sub|
     %tr
-      %td= subscriber.name
-      %td= subscriber.email
-      %td= subscriber.lists.first.affiliate.name unless subscriber.lists.empty? || subscriber.lists.first.affiliate.nil?
-      %td= subscriber.lists.first.is_fb unless subscriber.lists.empty?
+      %td= sub.subscriber.name
+      %td= sub.subscriber.email
+      %td= sub.step.promotion_name
+      %td= sub.affiliate.name unless sub.affiliate.nil?
+      %td= sub.is_fb unless sub.is_fb.nil?
+
