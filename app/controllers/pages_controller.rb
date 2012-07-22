@@ -7,6 +7,12 @@ class PagesController < ApplicationController
     if @source
       @subscriber = Subscriber.find_by_email(@source)
     end
+
+    if @list
+      if @list.step.page == @page
+        @list.set_current_step
+      end
+    end
   end
 
   protected

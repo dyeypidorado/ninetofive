@@ -32,12 +32,24 @@ class List < ActiveRecord::Base
     status_code == StatusCode::Pending
   end
 
-  def generate_confirmation_code
-    self.confirmation_code = rand(36**12).to_s(36)
-  end
-
   def set_subscribed
     self.status_code = StatusCode::Subscribed
     self.save
   end
+
+  def generate_confirmation_code
+    self.confirmation_code = rand(36**12).to_s(36)
+  end
+
+  def set_current_step
+    step = self.step
+    if !step.next_step.nil?
+      self.step = step.next_step
+      self.step.send_promotion
+    else
+      self.step = nil
+    end
+    self.save
+  end
 end
+
