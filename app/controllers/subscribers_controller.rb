@@ -17,8 +17,6 @@ class SubscribersController < ApplicationController
     @campaign = Campaign.find_by_trigger_code params[:campaign][:trigger_code] if params[:campaign][:trigger_code].present?
 
     if @subscriber.save
-      @list.subscriber = @subscriber
-
       if @affiliate
         @list.affiliate = @affiliate if @affiliate
       end
@@ -45,19 +43,21 @@ class SubscribersController < ApplicationController
   # Confirm subscription to page
   def confirm_subscription
     list = List.includes(:subscriber, :step).find_by_confirmation_code params[:confirmation_code]
-    @step = list.step
+    step = list.step
 
-    if !@subscriber.nil?
+    if !@source.nil?
+      list.subscriber = @source
+      list.save
+
       flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
 
       if list.is_fb
-        @mimi = Mimi::set_madmimi
         @mimi.add_to_list(@subscriber.email, "Facebook")
         flash[:success] = "Thanks! We've just sent an exclusive offer for Facebook subscribers. :)"
       end
 
-      if !@step.nil?
-        @step.send_promotion
+      if !step.nil?
+        list.send_promotion
       end
     end
     redirect_to root_path
