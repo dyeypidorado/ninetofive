@@ -11,5 +11,9 @@ FactoryGirl.define do
     fb_token nil
     fb_token_expiry nil
   end
+
+  factory :affiliate do
+    name Faker::Lorem.word
+  end
 end
 
