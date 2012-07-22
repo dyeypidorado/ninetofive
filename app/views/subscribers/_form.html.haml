@@ -1,4 +1,5 @@
 = form_for [@product, @subscriber] do |f|
+  = hidden_field :campaign, :trigger_code
   = hidden_field :affiliate, :id
   = hidden_field_tag :fb, true unless @fb.nil?
   - if @subscriber.errors.any?
@@ -13,3 +14,4 @@
   = f.label :email
   = f.text_field :email, :placeholder=> "E-mail"
   = f.submit "I want to sign up!"
+
