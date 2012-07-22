@@ -1,6 +1,6 @@
 - content_for :inline_nav do
   - if current_admin
-    = link_to "< Back to Campaign", [:admin, @campaign]
+    = link_to "< Back to Campaign", [:admin, @campaign] unless @campaign.nil?
     = link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @product, @page] }
 
 .grid_16#top_region

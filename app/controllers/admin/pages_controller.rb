@@ -22,6 +22,7 @@ class Admin::PagesController < Admin::BaseController
 
 
   def show
+    render template: 'pages/show'
   end
 
   def update
@@ -38,7 +39,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def find_campaign
-    @campaign = Campaign.find params[:campaign_id]
+    @campaign = Campaign.find params[:campaign_id] if params[:campaign_id]
   end
 
   def find_page

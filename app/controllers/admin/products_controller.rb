@@ -4,7 +4,7 @@ class Admin::ProductsController < Admin::BaseController
   before_filter :get_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.includes(:category)
+    @products = Product.includes(:category, :page)
     respond_with :admin, @products
   end
 
@@ -48,3 +48,4 @@ class Admin::ProductsController < Admin::BaseController
   end
 
 end
+

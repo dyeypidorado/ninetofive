@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   attr_accessible :name #, :listname
-  #after_create :create_sales
+  after_create :create_sales
 
   extend FriendlyId
   friendly_id :name, use: :slugged
@@ -17,10 +17,11 @@ class Product < ActiveRecord::Base
   def to_s; name end
 
   def create_sales
-    self.pages.create title: "Your squeeze page title here.", content: "Your content here." , page_type: PageType::Sales
+    self.create_page title: "Sales", page_type: PageType::Sales
   end
 
   def sales_page
     self.pages.find_by_page_type(PageType::Sales)
   end
 end
+
