@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715194733) do
+ActiveRecord::Schema.define(:version => 20120721135612) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120715194733) do
     t.integer  "affiliate_id"
     t.boolean  "is_fb"
     t.integer  "product_id"
+    t.integer  "step_id"
   end
 
   add_index "lists", ["affiliate_id"], :name => "index_lists_on_affiliate_id"
