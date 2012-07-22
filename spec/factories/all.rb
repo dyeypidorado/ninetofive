@@ -2,18 +2,20 @@
 
 require 'ffaker'
 FactoryGirl.define do
-  factory :user do
-    sequence(:email) { |n| "#{n}#{Faker::Internet.email}" }
-    name  Faker::Name.name
-    password "password"
-    password_confirmation "password"
-    provider "facebook"
-    fb_token nil
-    fb_token_expiry nil
+  factory :subscriber do
+    # sequence(:email) { |n| "#{n}#{Faker::Internet.email}" }
+    email "test@test.com"
+    name  "bob"
+    # password "password"
+    # password_confirmation "password"
   end
 
   factory :affiliate do
-    name Faker::Lorem.word
+    name "affiliate1"
+  end
+
+  factory :category do
+    name "category1"
   end
 end
 

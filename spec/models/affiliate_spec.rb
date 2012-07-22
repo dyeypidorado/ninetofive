@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Affiliate do
   it { should respond_to(:code) }
   it { should respond_to(:name) }
+  it { should respond_to(:lists) }
 
   context "valid attributes" do
     before(:each) do

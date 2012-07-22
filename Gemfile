@@ -36,5 +36,6 @@ group :test do
   gem 'rb-inotify'
   gem 'libnotify'
   gem 'ffaker'
+  gem 'shoulda-matchers'
 end
 
