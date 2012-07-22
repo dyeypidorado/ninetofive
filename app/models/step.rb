@@ -14,10 +14,6 @@ class Step < ActiveRecord::Base
     self.create_page title: self.promotion_name
   end
 
-  def send_promotion
-    #madmimi api
-  end
-
   def set_next_step
     campaign = self.campaign
     if !(campaign.steps.first == self)

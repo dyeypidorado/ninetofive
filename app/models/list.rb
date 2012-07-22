@@ -41,15 +41,27 @@ class List < ActiveRecord::Base
     self.confirmation_code = rand(36**12).to_s(36)
   end
 
+  def send_promotion
+    mimi = Mimi::set_madmimi
+    step = self.step
+    page = step.page
+    link = "localhost:3000"
+    options = { 'promotion_name' => 'test', 'recipients' => self.subscriber.email, 'from' => 'no-reply@9to5mil.com', 'subject' => 'Test'  }
+    yaml_body = { 'url' => link }
+    #mimi.send_mail(options, yaml_body)
+  end
+
   def set_current_step
     step = self.step
     if !step.next_step.nil?
       self.step = step.next_step
-      self.step.send_promotion
+      self.save
+
+      self.send_promotion
     else
       self.step = nil
+      #sales page
     end
-    self.save
   end
 end
 
