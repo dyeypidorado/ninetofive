@@ -1,7 +1,7 @@
 - if template == :table_row
   %tr
     %td #{product.name}
-    %td #{product.category.name}
+    %td #{product.category_name}
     %td= link_to product.page.title, [:admin, product.page]
     %td.actions
       = link_to "Edit", [:edit, :admin, product.category, product]

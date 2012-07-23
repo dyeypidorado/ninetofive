@@ -14,6 +14,8 @@ class Product < ActiveRecord::Base
 
   validates :name, presence: true
 
+  delegate :name, to: :category, prefix: true
+
   def to_s; name end
 
   def create_sales
