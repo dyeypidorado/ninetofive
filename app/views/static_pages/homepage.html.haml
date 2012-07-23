@@ -1,6 +1,7 @@
 .grid_16#thirdrow
-  .grid_11.alpha#video
-    = raw @static_page.region1
+  .grid_11.alpha
+    .mercury-region#region_one{:'data-mercury' => "full"}
+      = raw @static_page.region1
 
   .grid_5.omega#topsignup
     %h1<
@@ -14,16 +15,24 @@
 .clear
 
 .grid_16#intro
-  %p= raw @static_page.region2
+  %p.mercury-region#region_two{:'data-mercury' => "full"}
+    =raw @static_page.region2
 
 .clear
 
 .grid_4
-  %p= raw @static_page.region3
+  %p.mercury-region#region_three{:'data-mercury' => "full"}
+    =raw @static_page.region3
 .grid_6
-  %p= raw @static_page.region4
+  %p.mercury-region#region_four{:'data-mercury' => "full"}
+    =raw @static_page.region4
 .grid_6#news
-  %p= raw @static_page.region5
+  %p.mercury-region#region_five{:'data-mercury' => "full"}
+    =raw @static_page.region5
 
 .clear
+
+- if current_admin
+  .grid_16#bottomcontent
+    = link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @static_page] }
 

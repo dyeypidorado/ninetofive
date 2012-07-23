@@ -1,5 +1,6 @@
 class Admin::PagesController < Admin::BaseController
-  before_filter :find_product
+  #before_filter :find_product
+  before_filter :find_campaign, only: [:show, :update]
   before_filter :find_page, only: [:show, :update]
   layout :resolve_layout
 
@@ -8,7 +9,7 @@ class Admin::PagesController < Admin::BaseController
   end
 
   def index
-    @pages = @product.pages
+    #@pages = Pages.includes
   end
 
   def new
@@ -21,13 +22,15 @@ class Admin::PagesController < Admin::BaseController
 
 
   def show
+    render template: 'pages/show'
   end
 
   def update
-    @page.title = params[:content][:page_title][:value]
     @page.content = params[:content][:page_content][:value]
-    @page.save!
-    render :text => ""
+    @page.content = params[:content][:sidebar][:value]
+    if @page.save
+      redirect_to [:admin, @page]
+    end
   end
 
   protected
@@ -35,8 +38,12 @@ class Admin::PagesController < Admin::BaseController
     @product = Product.find params[:product_id]
   end
 
+  def find_campaign
+    @campaign = Campaign.find params[:campaign_id] if params[:campaign_id]
+  end
+
   def find_page
-    @page = @product.pages.find params[:id]
+    @page = Page.find params[:id]
   end
 end
 

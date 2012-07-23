@@ -15,7 +15,6 @@ class Admin::StaticPagesController < Admin::BaseController
       @subscriber = Subscriber.new
       @product = Product.first
     end
-    render template: "static_pages/show"
   end
 
   def new

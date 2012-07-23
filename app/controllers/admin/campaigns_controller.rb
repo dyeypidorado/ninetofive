@@ -5,6 +5,12 @@ class Admin::CampaignsController < Admin::BaseController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @steps = @campaign.steps.includes(:page)
+  end
+  
+  def edit
+    @products = Product.all
+    @campaign = Campaign.find(params[:id])
   end
 
   def new
@@ -15,6 +21,12 @@ class Admin::CampaignsController < Admin::BaseController
 
   def create
     campaign = Campaign.create(params[:campaign])
+    redirect_to [:admin, :campaigns]
+  end
+
+  def update
+    @campaign = Campaign.find(params[:id])
+    @campaign.update_attributes(params[:campaign])
     redirect_to [:admin, :campaigns]
   end
 

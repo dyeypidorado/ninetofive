@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120712115851) do
+ActiveRecord::Schema.define(:version => 20120721135612) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120712115851) do
     t.integer  "affiliate_id"
     t.boolean  "is_fb"
     t.integer  "product_id"
+    t.integer  "step_id"
   end
 
   add_index "lists", ["affiliate_id"], :name => "index_lists_on_affiliate_id"
@@ -75,14 +76,20 @@ ActiveRecord::Schema.define(:version => 20120712115851) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "page_type",   :default => 0
+    t.integer  "step_id"
+    t.text     "sidebar"
   end
 
   create_table "products", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "slug"
     t.integer  "category_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "referrals", :force => true do |t|

@@ -14,6 +14,7 @@ class SubscribersController < ApplicationController
     @list = @product.lists.create
     @subscriber = Subscriber.create params[:subscriber]
     @affiliate = Affiliate.find params[:affiliate][:id] if params[:affiliate][:id].present?
+    @campaign = Campaign.find_by_trigger_code params[:campaign][:trigger_code] if params[:campaign][:trigger_code].present?
 
     if @subscriber.save
       if @affiliate
@@ -23,9 +24,12 @@ class SubscribersController < ApplicationController
       if params[:fb].present?
         @list.is_fb = true
       end
-      @list.save
 
-      # if @campaign, get first step of campaign, associate to list
+      if @campaign
+        @list.step = @campaign.steps.first
+      end
+
+      @list.save
 
       ConfirmationMailer.send_confirmation(@list, @subscriber).deliver
       flash[:notice]  = "Thanks for signing up! We sent a confirmation mail. Please check your mailbox."
@@ -38,22 +42,25 @@ class SubscribersController < ApplicationController
 
   # Confirm subscription to page
   def confirm_subscription
-    list = List.includes(:subscriber).find_by_confirmation_code params[:confirmation_code]
-    @subscriber = list.subscriber
+    list = List.includes(:subscriber, :step).find_by_confirmation_code params[:confirmation_code]
+    step = list.step
 
-    if !@subscriber.nil?
+    if !@source.nil?
+      list.subscriber = @source
+      list.save
+
       flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
-    end
 
-    if list.is_fb
-      @mimi = Mimi::set_madmimi
-      @mimi.add_to_list(@subscriber.email, "Facebook")
-      flash[:success] = "Thanks! We've just sent an exclusive offer for Facebook subscribers. :)"
-    end
+      if list.is_fb
+        @mimi.add_to_list(@subscriber.email, "Facebook")
+        flash[:success] = "Thanks! We've just sent an exclusive offer for Facebook subscribers. :)"
+      end
 
+      if !step.nil?
+        list.send_promotion
+      end
+    end
     redirect_to root_path
   end
-
-  def show_step
-  end
 end
+

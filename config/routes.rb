@@ -16,7 +16,10 @@ Ninetofive::Application.routes.draw do
       resources :subscribers
       resources :campaigns
     end
-    resources :campaigns
+    resources :pages
+    resources :campaigns do 
+      resources :pages
+    end
   end
 
   resources :pages, only: [:show] do

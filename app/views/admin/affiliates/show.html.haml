@@ -7,12 +7,13 @@
 %table
   %tr
     %th Email
-    %th Page
+    %th Step/Promotion Name
 
   - @lists.each do |list|
     %tr
       %td= list.subscriber.email
-      %td= list.page.title
+      %td= list.step.promotion_name
+
 
 = link_to 'Edit', edit_admin_affiliate_path(@affiliate)
 \|

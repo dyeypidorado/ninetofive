@@ -13,9 +13,14 @@ $(document).ready(function(){
         'titlePosition'	: 'over',
         'padding'       : 16,
         'opacity'		: true,
-		'overlayShow'	: false,
-		'transitionIn'	: 'elastic',
-		'transitionOut'	: 'elastic'
+		    'overlayShow'	: true,
+		    'transitionIn'	: 'elastic',
+		    'transitionOut'	: 'elastic',
+		    'fitToView' : true,
+		    'closeClick' : true,
+		    'maxHeight' : 450,
+		    'maxWidth' : 500,
+		    'aspectRatio' : true
   	});
    // youtube videos with fancy box
    $('a.lightbox-video').click(function() {
@@ -45,5 +50,4 @@ $(document).ready(function(){
     });
     */
 });
-
 

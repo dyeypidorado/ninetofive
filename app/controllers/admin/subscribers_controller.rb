@@ -4,9 +4,9 @@ class Admin::SubscribersController < Admin::BaseController
   def index
     if params[:product_id]
       @product = Product.find(params[:product_id])
-      @subscribers = @product.subscribers.includes(:lists)
+      @subs = @product.lists.includes(:subscriber, :step)
     else
-      @subscribers = Subscriber.includes(:lists).all
+      @subs = List.includes(:subscriber, :step)
     end
   end
 
@@ -35,3 +35,4 @@ class Admin::SubscribersController < Admin::BaseController
     redirect_to admin_product_subscribers_path(@product.id)
   end
 end
+

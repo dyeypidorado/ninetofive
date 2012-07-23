@@ -1,0 +1,15 @@
+%h1 #{ @campaign.name }
+%strong Campaign Trigger Code:
+%em= @campaign.trigger_code
+
+%h3 Steps:
+%ol
+  - @steps.each do |step|
+    %li
+      %strong MadMIMI Promotion Name:
+      = step.promotion_name
+    %ul
+      %li
+        %strong Page:
+        = link_to step.page.title, [:admin, @campaign, step.page]
+

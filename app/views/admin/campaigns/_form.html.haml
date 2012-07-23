@@ -1,3 +1,13 @@
+%div{style: "margin-bottom: 1em"}= link_to "(How does this work?)", "#instructions", class: "lightbox helptext", title: "Creating a campaign"
+#instructions{style: "width: 400px; display: none;"}
+  %p The process is that you create a set of promotional emails over at Madmimi for each step in the campaign. You then map those promotional emails to discrete steps that would make up the campaign.
+
+  %p Here you create the campaign and the order of steps, entering the promotion name for each step (except the last, which will be a sales page.)
+
+  %p Every step has its own page.
+
+  %p When a user clicks through the promotion with the url in it, they get taken to the paired step page wherein we then detect that we need to send the next step's promotion mail which contains a link to its page, and so on, until they get moved to the sales page.
+
 = form_for [:admin, @campaign] do |f|
   = f.label :name
   = f.text_field :name
@@ -13,3 +23,4 @@
   %br
   %br
   = f.submit "Submit"
+

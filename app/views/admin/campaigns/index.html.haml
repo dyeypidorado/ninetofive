@@ -9,8 +9,8 @@
   - else
     - @campaigns.each do |campaign|
       %tr
-        %td= campaign.name
+        %td= link_to campaign.name, [:admin, campaign]
         %td= campaign.product.name
+        %td= link_to 'Edit', [:edit, :admin, campaign]
         %td= link_to 'Destroy', [:admin, campaign], :confirm => 'Are you sure?', :method => :delete
-
 = link_to "New Campaign", [:new, :admin, :campaign]

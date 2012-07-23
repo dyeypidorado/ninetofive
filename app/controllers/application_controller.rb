@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   before_filter :save_referrer
   before_filter :get_source
   before_filter :get_pages
+  before_filter :get_list
+  before_filter :get_campaign
 
   def set_madmimi
     @mimi = Mimi::set_madmimi
@@ -24,6 +26,14 @@ class ApplicationController < ActionController::Base
 
   def get_source
     @source = Subscriber.find_by_email params[:source] if params[:source]
+  end
+
+  def get_campaign
+    @campaign = Campaign.find_by_trigger_code params[:c] if params[:c]
+  end
+
+  def get_list
+    @list = List.includes(:step).find_by_confirmation_code params[:l] if params[:l]
   end
 
   def get_pages
