@@ -43,12 +43,13 @@ class List < ActiveRecord::Base
 
   def send_promotion
     mimi = Mimi::set_madmimi
+
     step = self.step
-    page = step.page
-    link = "localhost:3000"
-    options = { 'promotion_name' => 'test', 'recipients' => self.subscriber.email, 'from' => 'no-reply@9to5mil.com', 'subject' => 'Test'  }
+    link = "localhost:3000/page/#{step.page.link_code}?l=#{self.confirmation_code}"
+
+    options = { 'promotion_name' => step.promotion_name, 'recipients' => self.subscriber.email, 'from' => 'no-reply@9to5mil.com', 'subject' => 'Test'  }
     yaml_body = { 'url' => link }
-    #mimi.send_mail(options, yaml_body)
+    mimi.send_mail(options, yaml_body)
   end
 
   def set_current_step

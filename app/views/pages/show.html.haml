@@ -10,12 +10,13 @@
 
 =# button_to_function "Show Link", "alert( 'Copy this link and paste to your emails: #{request.url.gsub '/admin', ''}/(email)' )", id: "show_link"
 
-- if current_admin
-  %p#show_link
-    %strong
-      Copy this link and paste in your emails:
-      %br
-    %em
-      =# "#{request.url.gsub '/admin', ''}/(email)"
-      = "#{page_url(@page.link_code)}?source=(email)"
+/
+  - if current_admin
+    %p#show_link
+      %strong
+        Copy this link and paste in your emails:
+        %br
+      %em
+        =# "#{request.url.gsub '/admin', ''}/(email)"
+        = "#{page_url(@page.link_code)}?source=(email)"
 
