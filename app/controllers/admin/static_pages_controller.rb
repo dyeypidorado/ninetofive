@@ -14,6 +14,7 @@ class Admin::StaticPagesController < Admin::BaseController
     if @static_page.name == 'Homepage'
       @subscriber = Subscriber.new
       @product = Product.first
+      render template: "static_pages/homepage" and return
     end
   end
 
@@ -45,3 +46,4 @@ class Admin::StaticPagesController < Admin::BaseController
     @static_page = StaticPage.find_by_id params[:id]
   end
 end
+
