@@ -39,7 +39,7 @@ class Admin::StaticPagesController < Admin::BaseController
     @static_page = StaticPage.find(params[:id])
     @static_page.destroy
 
-    redirect_to static_pages_url
+    redirect_to admin_static_pages_path
   end
 
   protected
