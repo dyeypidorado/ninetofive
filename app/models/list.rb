@@ -10,6 +10,8 @@ class List < ActiveRecord::Base
   before_create :generate_confirmation_code
   before_create :set_pending
 
+  delegate :promotion_name, to: :step, allow_nil: true, prefix: true
+
   def status
     case status_code
     when StatusCode::Pending
@@ -69,3 +71,4 @@ class List < ActiveRecord::Base
     self.send_promotion
   end
 end
+
