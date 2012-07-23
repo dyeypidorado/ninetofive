@@ -47,12 +47,12 @@ class SubscribersController < ApplicationController
 
     if !@source.nil?
       list.subscriber = @source
-      list.save
+      list.set_subscribed
 
       flash[:success] = "Thanks! We'll send you updates/special offers related to #{@product} as soon as we have them. :)"
 
       if list.is_fb
-        @mimi.add_to_list(@subscriber.email, "Facebook")
+        @mimi.add_to_list(list.subscriber.email, "Facebook")
         flash[:success] = "Thanks! We've just sent an exclusive offer for Facebook subscribers. :)"
       end
 
@@ -63,4 +63,3 @@ class SubscribersController < ApplicationController
     redirect_to root_path
   end
 end
-

@@ -1,8 +1,9 @@
 module StatusCode
   Pending = 1
   Subscribed = 2
-  Ordered = 3
-  Bought = 4
+  On_Sales = 3
+  Ordered = 4
+  Bought = 5
 end
 
 module PageType
