@@ -8,6 +8,7 @@ class List < ActiveRecord::Base
   belongs_to :step
 
   before_create :generate_confirmation_code
+  before_create :set_pending
 
   def status
     case status_code
@@ -37,15 +38,24 @@ class List < ActiveRecord::Base
     self.save
   end
 
+  def set_pending
+    self.status_code = StatusCode::Pending
+  end
+
   def generate_confirmation_code
     self.confirmation_code = rand(36**12).to_s(36)
   end
 
   def send_promotion
     mimi = Mimi::set_madmimi
-
     step = self.step
-    link = "localhost:3000/pages/#{step.page.link_code}?l=#{self.confirmation_code}"
+    product = self.product
+
+    if !step.next_step.nil?
+      link = "localhost:3000/pages/#{step.page.link_code}?l=#{self.confirmation_code}"
+    else
+      link = "localhost:3000/pages/#{product.page.link_code}?l=#{self.confirmation_code}"
+    end
 
     options = { 'promotion_name' => step.promotion_name, 'recipients' => self.subscriber.email, 'from' => 'no-reply@9to5mil.com', 'subject' => 'Test'  }
     yaml_body = { 'url' => link }
@@ -54,15 +64,8 @@ class List < ActiveRecord::Base
 
   def set_current_step
     step = self.step
-    if !step.next_step.nil?
-      self.step = step.next_step
-      self.save
-
-      self.send_promotion
-    else
-      self.step = nil
-      #sales page
-    end
+    self.step = step.next_step if !step.next_step.nil?
+    self.save
+    self.send_promotion
   end
 end
-
