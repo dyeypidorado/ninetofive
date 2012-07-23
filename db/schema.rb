@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120715194733) do
+ActiveRecord::Schema.define(:version => 20120723112046) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -107,7 +107,10 @@ ActiveRecord::Schema.define(:version => 20120715194733) do
     t.text     "region3"
     t.text     "region4"
     t.text     "region5"
+    t.string   "slug"
   end
+
+  add_index "static_pages", ["slug"], :name => "index_static_pages_on_slug", :unique => true
 
   create_table "statuses", :force => true do |t|
     t.string   "value"

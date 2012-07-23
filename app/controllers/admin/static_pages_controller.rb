@@ -44,7 +44,7 @@ class Admin::StaticPagesController < Admin::BaseController
 
   protected
   def find_page
-    @static_page = StaticPage.find_by_id params[:id]
+    @static_page = StaticPage.find params[:id]
   end
 end
 
