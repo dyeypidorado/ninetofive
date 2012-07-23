@@ -16,6 +16,7 @@ class Admin::StaticPagesController < Admin::BaseController
       @product = Product.first
       render template: "static_pages/homepage" and return
     end
+    render template: "static_pages/show"
   end
 
   def new

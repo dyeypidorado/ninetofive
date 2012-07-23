@@ -31,10 +31,10 @@
           %li= link_to "Dashboard", admin_root_path
         - else
           %li= link_to "Home", root_path
-        /
-          %li= link_to "Book", @book
-          %li= link_to "Merchandise", @merchandise
-          %li= link_to "Seminars", @seminars
+
+        %li= link_to "Book", @book
+        %li= link_to "Merchandise", @merchandise
+        %li= link_to "Seminars", @seminars
         %li= link_to "News", @news
         %li= link_to "Contact", @contact
     /

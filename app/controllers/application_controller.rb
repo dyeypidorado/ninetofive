@@ -27,11 +27,14 @@ class ApplicationController < ActionController::Base
   end
 
   def get_pages
-    @book = Category.find_by_name("Books")
-    @merchandise = Category.find_by_name("Merchandise")
-    @seminars = Category.find_by_name("Seminars")
-    @news = StaticPage.find_by_name("News")
-    @contact = StaticPage.find_by_name("Contact")
+    # @book = Category.find_by_name("Books")
+    # @merchandise = Category.find_by_name("Merchandise")
+    # @seminars = Category.find_by_name("Seminars")
+    @news         = StaticPage.find_or_create_by_name("News")
+    @contact      = StaticPage.find_or_create_by_name("Contact")
+    @book         = StaticPage.find_or_create_by_name("Books")
+    @merchandise  = StaticPage.find_or_create_by_name("Merchandise")
+    @seminars     = StaticPage.find_or_create_by_name("Seminars")
   end
 end
 
