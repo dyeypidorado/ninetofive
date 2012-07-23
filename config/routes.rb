@@ -17,7 +17,7 @@ Ninetofive::Application.routes.draw do
       resources :campaigns
     end
     resources :pages
-    resources :campaigns do 
+    resources :campaigns do
       resources :pages
     end
   end
@@ -30,7 +30,8 @@ Ninetofive::Application.routes.draw do
   resources :products do
     resources :subscribers
   end
-  resources :static_pages, only: [:show]
+
+  resources :static_pages, only: [:show], path: "/sections/"
 
   resources :categories, :only => [:show] do
     resources :products, :only => [:index]
@@ -43,3 +44,4 @@ Ninetofive::Application.routes.draw do
 
   root :to => 'static_pages#homepage'
 end
+
