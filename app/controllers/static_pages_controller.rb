@@ -10,6 +10,11 @@ class StaticPagesController < ApplicationController
 
   def show
     @static_page = StaticPage.find(params[:id])
+    if @static_page.name == "Homepage"
+      @subscriber = Subscriber.new
+      @product = Product.first
+      render template: "static_pages/homepage" and return
+    end
   end
 
   protected
@@ -25,3 +30,4 @@ So I was a 9 to 5 Millionaire for several years, then one day, I made it.
 <em>I became financially free, no more need for a 9 to 5 job.</em>"
   end
 end
+

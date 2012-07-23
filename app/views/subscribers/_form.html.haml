@@ -1,17 +1,24 @@
-= form_for [@product, @subscriber] do |f|
-  = hidden_field :campaign, :trigger_code
-  = hidden_field :affiliate, :id
-  = hidden_field_tag :fb, true unless @fb.nil?
-  - if @subscriber.errors.any?
-    %div#error_explanation
-      %h2 #{pluralize(@subscriber.errors.count, "error")} is stopping you from being signed up:
-      %ul
-        - @subscriber.errors.full_messages.each do |msg|
-          %li= msg
+- if @alternate
+  = form_for [@product, @subscriber] do |f|
+    = hidden_field :affiliate, :id
+    = hidden_field_tag :fb, true unless @fb.nil?
+    = f.text_field :name, :placeholder=> "Name"
+    = f.text_field :email, :placeholder=> "E-mail"
+    = f.submit "Submit"
+- else
+  = form_for [@product, @subscriber] do |f|
+    = hidden_field :affiliate, :id
+    = hidden_field_tag :fb, true unless @fb.nil?
+    - if @subscriber.errors.any?
+      %div#error_explanation
+        %h2 #{pluralize(@subscriber.errors.count, "error")} is stopping you from being signed up:
+        %ul
+          - @subscriber.errors.full_messages.each do |msg|
+            %li= msg
 
-  = f.label :name
-  = f.text_field :name, :placeholder=> "Name"
-  = f.label :email
-  = f.text_field :email, :placeholder=> "E-mail"
-  = f.submit "I want to sign up!"
+    = f.label :name
+    = f.text_field :name, :placeholder=> "Name"
+    = f.label :email
+    = f.text_field :email, :placeholder=> "E-mail"
+    = f.submit "I want to sign up!"
 

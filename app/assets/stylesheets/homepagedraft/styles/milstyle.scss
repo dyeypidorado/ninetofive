@@ -192,7 +192,7 @@ background:#ffed76;
 width:693px;
 padding:5px 0px 5px 5px;
 }
-#bottomsignup input {
+#bottomsignup #new_subscriber input {
 width:250px;
 display:block;
 float:left;
@@ -204,7 +204,7 @@ height:32px;
 box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 font-size:15px;
 }
-#bottomsignup input.submit {
+#bottomsignup #new_subscriber input[type='submit'] {
 width:80px;
 }
 
@@ -240,5 +240,9 @@ font-size:15px;
 #thirdrow { height: 360px; }
 #new_subscriber input {
   margin-bottom: 10px;
+}
+
+#bottomsignup #new_subscriber input {
+  margin-bottom: 0;
 }
 

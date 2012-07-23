@@ -28,12 +28,21 @@
   %h2 Upcoming Events
   %p.mercury-region#region_four{:'data-mercury' => "full"}
     =raw @static_page.region4
+
 .grid_6#news
   %h2 News
   %p.mercury-region#region_five{:'data-mercury' => "full"}
     =raw @static_page.region5
 
 .clear
+
+#bottomcontent.grid_16
+  #bottomsocial.grid_4.alpha
+  #bottomsignup.grid_12.omega
+    %h3 Sign up
+    - @alternate = true
+    = render "subscribers/form"
+
 
 - if current_admin
   .grid_16#bottomcontent
