@@ -28,8 +28,6 @@ class Step < ActiveRecord::Base
     prev_step = campaign.steps.find_by_next_id self.id
     next_step = campaign.steps.find self.next_id if !self.next_id.nil?
 
-    binding.pry; require 'pry'
-
     if !prev_step.nil?
       if !next_step.nil?
         prev_step.next_id = next_step.id
@@ -41,4 +39,3 @@ class Step < ActiveRecord::Base
   end
 
 end
-

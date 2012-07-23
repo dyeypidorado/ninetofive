@@ -27,9 +27,10 @@ class Admin::PagesController < Admin::BaseController
 
   def update
     @page.content = params[:content][:page_content][:value]
-    @page.content = params[:content][:sidebar][:value]
+    @page.sidebar = params[:content][:sidebar][:value]
     if @page.save
-      redirect_to [:admin, @page]
+      render text: ''
+      #redirect_to [:admin, @page]
     end
   end
 
@@ -46,4 +47,3 @@ class Admin::PagesController < Admin::BaseController
     @page = Page.find params[:id]
   end
 end
-
