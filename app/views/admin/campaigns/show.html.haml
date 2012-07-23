@@ -11,5 +11,9 @@
     %ul
       %li
         %strong Page:
-        = link_to step.page.title, [:admin, @campaign, step.page]
-
+        - if !step.next_step.nil?
+          = link_to step.page.title, [:admin, @campaign, step.page]
+        - else
+          = "Last step is dedicated to the"
+          = link_to 'Sales Page', [:admin, @sales_page]
+          = "."

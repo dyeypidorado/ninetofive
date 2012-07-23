@@ -5,9 +5,10 @@ class Admin::CampaignsController < Admin::BaseController
 
   def show
     @campaign = Campaign.find(params[:id])
+    @sales_page = @campaign.product.page
     @steps = @campaign.steps.includes(:page)
   end
-  
+
   def edit
     @products = Product.all
     @campaign = Campaign.find(params[:id])
