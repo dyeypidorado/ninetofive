@@ -8,9 +8,9 @@
 
   - @subs.each do |sub|
     %tr
-      %td= sub.subscriber.name
-      %td= sub.subscriber.email
+      %td= sub.subscriber_name
+      %td= sub.subscriber_email
       %td= sub.step_promotion_name
-      %td= sub.affiliate.name unless sub.affiliate.nil?
-      %td= sub.is_fb unless sub.is_fb.nil?
+      %td= sub.affiliate_name
+      %td= sub.is_fb
 

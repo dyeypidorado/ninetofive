@@ -11,6 +11,8 @@ class List < ActiveRecord::Base
   before_create :set_pending
 
   delegate :promotion_name, to: :step, allow_nil: true, prefix: true
+  delegate :name, :email, to: :subscriber, prefix: true, allow_nil: true
+  delegate :name, to: :affiliate, prefix: true, allow_nil: true
 
   def status
     case status_code
