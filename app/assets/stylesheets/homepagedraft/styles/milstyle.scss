@@ -1,22 +1,42 @@
-body{
-background-image:image-url('grafx/bg_stripe.gif');
-font-family: "Open Sans", sans-serif;
+body {
+  background-image:image-url('grafx/bg_stripe.gif');
+  font-family: "Open Sans", sans-serif;
 }
 
-div.container_16{
-background-color:#fff;
+div.container_16 {
+  background-color:#fff;
 }
 
 /*GENERAL TYPOGRAPHY*/
-h2{
-font-family:'Dosis', sans-serif;
-font-weight:700;
-text-transform:uppercase;
+
+h1 {
+  font-size: 190%;
 }
-h3{
-font-family:'Open Sans', sans-serif;
-font-weight:800;
-text-transform:uppercase;
+
+h2 {
+  font-family: 'Dosis', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 175%;
+}
+
+h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 160%;
+}
+
+h4 {
+  font-size: 135%;
+}
+
+h5 {
+  font-size: 120%;
+}
+
+h6 {
+  font-size: 105%;
 }
 
 /*NAVI & SOCIAL*/
@@ -154,59 +174,94 @@ clear:left;
 float:left;
 margin:0 10px 10px 0;
 }
-#news p{
-font-size:120%;
+
+#products, #news, #events {
+  color: #454545;
+  font-family: "Dosis";
+  a {
+    background: #fff6b8;
+  }
 }
-#news p:hover{
-background:#fff6b8;
+
+#news {
+  font-size:120%;
+  a {
+    background: transparent;
+    display: block;
+    text-decoration: none;
+    color: #333;
+    &:hover {
+      background: #fff6b8;
+    }
+  }
 }
 
 /*BOTTOMBAR*/
-#bottomcontent{
-border:1px solid #ffed76;
-width:938px;
+#bottomcontent {
+  // border:1px solid #ffed76;
+  // width:938px;
+  background: #ffed76;
+  h3 {
+    float: left;
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+    text-transform: lowercase;
+  }
 }
-#bottomsocial{
-background:white;
-padding:5px 0px 5px 5px;
-width:215px;
+
+#bottomsocial {
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  ul li a {
+    margin-top:2px;
+    display:block;
+    float:left;
+    margin-left:5px;
+    height:30px;
+    text-indent:-999em;
+    text-decoration:none;
+  }
+
 }
-#bottomsocial ul li a{
-margin-top:2px;
-display:block;
-float:left;
-margin-left:5px;
-height:30px;
-text-indent:-999em;
-text-decoration:none;
-}
-#bottomcontent h3{
-float:left;
-font-weight:600;
-font-size:15px;
-color:#333;
-text-transform:lowercase;
-}
+
 #bottomsignup {
-background:#ffed76;
-width:693px;
-padding:5px 0px 5px 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  #new_subscriber {
+    input[type='text'] {
+      width: 200px;
+      display: block;
+      float: left;
+      margin-left: 10px;
+      border: 1px solid #999;
+      height: 26px;
+      padding: 3px;
+      -webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      -moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      font-size: 15px;
+    }
+
+    input[type='submit'] {
+      font-family: "Dosis";
+      text-transform: lowercase;
+      background: #FFED76 image-url('signup.png') no-repeat center right;
+      text-align: right;
+      font-weight: bold;
+      padding-right: 50px;
+      width: 135px;
+      height: 32px;
+      line-height: 32px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+  }
 }
-#bottomsignup #new_subscriber input {
-width:250px;
-display:block;
-float:left;
-margin-left:10px;
-border: 1px solid #999;
-height:32px;
--webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
--moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-font-size:15px;
-}
-#bottomsignup #new_subscriber input[type='submit'] {
-width:80px;
-}
+
 
 /*FOOTER*/
 #footer{

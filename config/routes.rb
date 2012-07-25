@@ -1,4 +1,8 @@
 Ninetofive::Application.routes.draw do
+    namespace :mercury do
+      resources :images
+    end
+
   get "confirm_subscription/:confirmation_code" => "subscribers#confirm_subscription", as: :confirmation
 
   mount Mercury::Engine => '/'

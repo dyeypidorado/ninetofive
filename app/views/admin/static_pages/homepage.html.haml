@@ -20,17 +20,17 @@
 
 .clear
 
-.grid_4
-  %p.mercury-region#region_three{:'data-mercury' => "full"}
-    =raw @static_page.region3
-.grid_6
-  %p.mercury-region#region_four{:'data-mercury' => "full"}
-    =raw @static_page.region4
+.grid_4#products
+  .mercury-region#region_three{:'data-mercury' => "full"}=raw @static_page.region3
+
+.grid_6#events
+  .mercury-region#region_four{:'data-mercury' => "full"}=raw @static_page.region4
+
 .grid_6#news
-  %p.mercury-region#region_five{:'data-mercury' => "full"}
-    =raw @static_page.region5
+  .mercury-region#region_five{:'data-mercury' => "full"}=raw @static_page.region5
 
 .clear
 
 .grid_16#bottomcontent
   = link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @static_page] }
+

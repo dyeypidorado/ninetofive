@@ -4,7 +4,8 @@
     = hidden_field_tag :fb, true unless @fb.nil?
     = f.text_field :name, :placeholder=> "Name"
     = f.text_field :email, :placeholder=> "E-mail"
-    = f.submit "Submit"
+    = f.submit "Sign up now!"
+
 - else
   = form_for [@product, @subscriber] do |f|
     = hidden_field :affiliate, :id

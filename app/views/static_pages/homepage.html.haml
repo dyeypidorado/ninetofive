@@ -20,31 +20,29 @@
 
 .clear
 
-.grid_4
+.grid_4#products
   %h2 Products
-  %p.mercury-region#region_three{:'data-mercury' => "full"}
-    =raw @static_page.region3
-.grid_6
+  .mercury-region#region_three{:'data-mercury' => "full"}=raw @static_page.region3
+
+.grid_6#events
   %h2 Upcoming Events
-  %p.mercury-region#region_four{:'data-mercury' => "full"}
-    =raw @static_page.region4
+  .mercury-region#region_four{:'data-mercury' => "full"}=raw @static_page.region4
 
 .grid_6#news
   %h2 News
-  %p.mercury-region#region_five{:'data-mercury' => "full"}
-    =raw @static_page.region5
+  .mercury-region#region_five{:'data-mercury' => "full"}=raw @static_page.region5
 
 .clear
 
 #bottomcontent.grid_16
-  #bottomsocial.grid_4.alpha
-  #bottomsignup.grid_12.omega
-    %h3 Sign up
+  #bottomsocial.grid_6.alpha
+    %h3 Connect
+  #bottomsignup.grid_10.omega
     - @alternate = true
     = render "subscribers/form"
 
 
 - if current_admin
-  .grid_16#bottomcontent
-    = link_to "Edit this Page", "/editor" + request.path, id: "edit_link", data: { save_url: [:admin, @static_page] }
+  .grid_16
+    = link_to "Edit this Page", "/editor" + admin_static_page_path(@static_page), id: "edit_link", data: { save_url: [:admin, @static_page] }
 
