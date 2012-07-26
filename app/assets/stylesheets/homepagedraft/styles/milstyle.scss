@@ -1,3 +1,5 @@
+$yellow: #f7bd31;
+
 body {
   background-image:image-url('grafx/bg_stripe.gif');
   font-family: "Open Sans", sans-serif;
@@ -43,25 +45,29 @@ h6 {
 #nav ul, #social ul, #bottomsocial ul, #footer ul{
 list-style-type:none;
 }
-#nav ul li a{
-display:block;
-float:left;
-margin-right:10px;
-padding:2px;
-height:30px;
-font-family:'Open Sans', sans-serif;
-font-weight:800;
-font-size:20px;
-text-decoration:none;
-text-transform:lowercase;
-color:#333;
+
+#nav ul li a {
+  display: block;
+  float: left;
+  margin-right: 10px;
+  padding: 2px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: lowercase;
+  color: #333;
+  &:hover {
+    background:#fff6b8;
+  }
+  &:active {
+    background:#000;
+  }
+  &.current {
+    border-bottom: 5px solid #f3be16;
+  }
 }
-#nav ul li a:hover{
-background:#fff6b8;
-}
-#nav ul li a:active{
-background:#000;
-}
+
 #social ul li a{
 margin-top:2px;
 display:block;
@@ -90,8 +96,9 @@ width:68px;
 
 
 /*SIGNUP PANEL*/
-#thirdrow{
-background:#f7bd31;
+#thirdrow {
+  height: 360px;
+  background: $yellow;
 }
 #topsignup{
 margin-top:10px;
@@ -282,17 +289,16 @@ font-size:12px;
 color:#ccc;
 }
 #footer ul li a:hover{
-color:#f7bd31;
+color:$yellow;
 }
 #footer p{
 text-align:right;
 font-family:'Open Sans', sans-serif;
 font-weight:300;
-color:#f7bd31;
+color:$yellow;
 font-size:15px;
 }
 
-#thirdrow { height: 360px; }
 #new_subscriber input {
   margin-bottom: 10px;
 }

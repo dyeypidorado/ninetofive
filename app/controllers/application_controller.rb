@@ -49,9 +49,9 @@ class ApplicationController < ActionController::Base
   end
 
   def get_settings
-    Setting.youtube_link ||= ""
-    Setting.email        ||= ""
-    Setting.fb_link      ||= ""
+    Setting.youtube_link  ||= ""
+    Setting.email         ||= ""
+    Setting.fb_link       ||= ""
     @yt    = Setting.youtube_link
     @fb    = Setting.fb_link
     @email = "mailto:#{Setting.email}"

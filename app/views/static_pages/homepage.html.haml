@@ -49,4 +49,12 @@
 - if current_admin
   .grid_16
     = link_to "Edit this Page", "/editor" + admin_static_page_path(@static_page), id: "edit_link", data: { save_url: [:admin, @static_page] }
+  :css
+    #thirdrow {
+      height: 375px;
+    }
+
+    #region_one {
+      height: 375px;
+    }
 
