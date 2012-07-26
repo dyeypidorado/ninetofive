@@ -37,6 +37,10 @@
 #bottomcontent.grid_16
   #bottomsocial.grid_6.alpha
     %h3 Connect
+    %ul
+      %li.fb= link_to "Like on FB", @fb
+      %li.youtube= link_to "Youtube", @yt
+      %li.email= link_to "Email", @email
   #bottomsignup.grid_10.omega
     - @alternate = true
     = render "subscribers/form"

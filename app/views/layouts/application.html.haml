@@ -30,20 +30,20 @@
         - if admin_signed_in?
           %li= link_to "Dashboard", admin_root_path
         - else
-          %li= link_to "Home", root_path
+          %li= link_to "Home", root_path, class: cp?(root_path)
 
-        %li= link_to "Book", @book
-        %li= link_to "Merchandise", @merchandise
-        %li= link_to "Seminars", @seminars
-        %li= link_to "News", @news
-        %li= link_to "Contact", @contact
-    /
-      %div.grid_5#social
-        %ul
-          %li.fb= link_to "Like on FB", "#"
-          %li.youtube= link_to "Youtube", "#"
-          %li.email= link_to "Email", "#"
-          %li.connect= link_to "Connect", "#"
+        %li= link_to "Book", @book, class: cp?(polymorphic_path(@book))
+        %li= link_to "Merchandise", @merchandise, class: cp?(polymorphic_path(@merchandise))
+        %li= link_to "Seminars", @seminars, class: cp?(polymorphic_path(@seminars))
+        %li= link_to "News", @news, class: cp?(polymorphic_path(@news))
+        %li= link_to "Contact", @contact, class: cp?(polymorphic_path(@contact))
+
+    %div.grid_5#social
+      %ul
+        %li.fb= link_to "Like on FB", @fb
+        %li.youtube= link_to "Youtube", @yt
+        %li.email= link_to "Email", @email
+        %li.connect= link_to "Connect", "#"
     %div.clear
 
     /next row
