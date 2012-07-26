@@ -137,6 +137,8 @@ GEM
       activesupport (= 3.2.3)
       bundler (~> 1.0)
       railties (= 3.2.3)
+    rails-settings-cached (0.2.1)
+      rails (>= 3.0.0)
     railties (3.2.3)
       actionpack (= 3.2.3)
       activesupport (= 3.2.3)
@@ -223,6 +225,7 @@ DEPENDENCIES
   paperclip
   pry
   rails (= 3.2.3)
+  rails-settings-cached
   rb-inotify
   responders
   rspec-rails

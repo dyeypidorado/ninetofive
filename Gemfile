@@ -14,6 +14,7 @@ gem 'thin'
 gem 'jquery-rails'
 gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '9d7bfc0ffbdd36cd1777a8e439a424aefda953d0'
 gem 'responders'
+gem "rails-settings-cached"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -50,3 +51,4 @@ group :test do
   gem 'shoulda-matchers'
 end
 gem 'paperclip'
+

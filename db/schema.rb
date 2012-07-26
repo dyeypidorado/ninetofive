@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120725084916) do
+ActiveRecord::Schema.define(:version => 20120726150051) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -76,6 +76,37 @@ ActiveRecord::Schema.define(:version => 20120725084916) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "monologue_posts", :force => true do |t|
+    t.integer  "posts_revision_id"
+    t.boolean  "published"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "monologue_posts_revisions", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "url"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "published_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "monologue_posts_revisions", ["id"], :name => "index_monologue_posts_revisions_on_id", :unique => true
+  add_index "monologue_posts_revisions", ["post_id"], :name => "index_monologue_posts_revisions_on_post_id"
+  add_index "monologue_posts_revisions", ["published_at"], :name => "index_monologue_posts_revisions_on_published_at"
+  add_index "monologue_posts_revisions", ["url"], :name => "index_monologue_posts_revisions_on_url"
+
+  create_table "monologue_users", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -103,6 +134,17 @@ ActiveRecord::Schema.define(:version => 20120725084916) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "var",                      :null => false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", :limit => 30
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "settings", ["thing_type", "thing_id", "var"], :name => "index_settings_on_thing_type_and_thing_id_and_var", :unique => true
 
   create_table "static_pages", :force => true do |t|
     t.datetime "created_at", :null => false
