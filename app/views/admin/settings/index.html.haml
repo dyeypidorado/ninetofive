@@ -1,0 +1,7 @@
+= form_tag [:save_settings, :admin, :settings], method: :put do
+  - @settings.each_pair do |key, value|
+    = label_tag "setting[#{key}]", key.capitalize
+    = text_field_tag "setting[#{key}]", value
+    %br
+  = submit_tag "Save"
+

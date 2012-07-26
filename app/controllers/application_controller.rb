@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   before_filter :get_pages
   before_filter :get_list
   before_filter :get_campaign
+  before_filter :get_settings
 
   def set_madmimi
     @mimi = Mimi::set_madmimi
@@ -45,6 +46,15 @@ class ApplicationController < ActionController::Base
     @book         = StaticPage.find_or_create_by_name("Books")
     @merchandise  = StaticPage.find_or_create_by_name("Merchandise")
     @seminars     = StaticPage.find_or_create_by_name("Seminars")
+  end
+
+  def get_settings
+    Setting.youtube_link ||= ""
+    Setting.email        ||= ""
+    Setting.fb_link      ||= ""
+    @yt    = Setting.youtube_link
+    @fb    = Setting.fb_link
+    @email = "mailto:#{Setting.email}"
   end
 end
 

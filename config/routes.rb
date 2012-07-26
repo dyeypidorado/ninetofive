@@ -1,7 +1,7 @@
 Ninetofive::Application.routes.draw do
-    namespace :mercury do
-      resources :images
-    end
+  namespace :mercury do
+    resources :images
+  end
 
   get "confirm_subscription/:confirmation_code" => "subscribers#confirm_subscription", as: :confirmation
 
@@ -23,6 +23,11 @@ Ninetofive::Application.routes.draw do
     resources :pages
     resources :campaigns do
       resources :pages
+    end
+    resources :settings, only: [:index] do
+      collection do
+        put "save_settings"
+      end
     end
   end
 
