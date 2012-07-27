@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
     @product = Product.find(params[:id]) if params[:id]
     @subscriber = Subscriber.new
     @static_page = StaticPage.find_by_name "Homepage" || build_homepage
+    if @campaign.nil?
+      @campaign = @product.campaigns.last
+    end
   end
 
   def show
@@ -30,4 +33,3 @@ So I was a 9 to 5 Millionaire for several years, then one day, I made it.
 <em>I became financially free, no more need for a 9 to 5 job.</em>"
   end
 end
-
