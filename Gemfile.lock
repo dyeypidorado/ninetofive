@@ -7,6 +7,12 @@ GIT
       coffee-rails
       rails (~> 3.2)
 
+GIT
+  remote: https://github.com/rfc2822/spawn.git
+  revision: ca0cf371ad02f0679ad26ce5bc9c7a9337569982
+  specs:
+    spawn (1.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -231,6 +237,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   shoulda-matchers
+  spawn!
   spork
   sqlite3
   therubyracer
