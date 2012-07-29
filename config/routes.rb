@@ -1,4 +1,6 @@
 Ninetofive::Application.routes.draw do
+  post 'export_to_madmimi' => "admin::subscribers#export"
+  get 'mimi_lists' => "admin::subscribers#mimi_lists"
   namespace :mercury do
     resources :images
   end

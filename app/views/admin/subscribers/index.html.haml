@@ -1,16 +1,56 @@
-%table
-  %tr
-    %th Name
-    %th Email
-    %th Step/ Promotion Name
-    %th Referrer
-    %th From Facebook
-
-  - @subs.each do |sub|
+= form_tag export_to_madmimi_path, remote: true, id: "export_form" do
+  %table
     %tr
-      %td= sub.subscriber_name
-      %td= sub.subscriber_email
-      %td= sub.step_promotion_name
-      %td= sub.affiliate_name
-      %td= sub.is_fb
+      %th.export
+        Select all
+        %br
+        <input type="checkbox" onClick="toggle_all(this)" />
+
+      %th Name
+      %th Email
+      %th Step/ Promotion Name
+      %th Referrer
+      %th From Facebook
+
+    - @subs.each do |sub|
+      %tr
+        %td.export{style: "text-align: center"}= check_box_tag 'import_email[]', sub.subscriber_email, false, class: "check_email"
+        %td= sub.subscriber_name
+        %td= sub.subscriber_email
+        %td= sub.step_promotion_name
+        %td= sub.affiliate_name
+        %td= sub.is_fb
+
+  = select_tag "madmimi_list"
+  = submit_tag "Import checked to list", id: "export_submit"
+  = image_tag "loading.gif", id: "spinner"
+  %span#done
+
+:javascript
+  var globaldebug;
+  function toggle_all(source){
+    checkboxes = document.getElementsByName('import_email[]');
+    for(var i in checkboxes) checkboxes[i].checked = source.checked;
+  }
+
+  function toggle_load() { $("#spinner").toggle(); $("#done").html(""); }
+  function complete() { $("#done").html("Done."); toggle_load }
+
+  $(document).ready(function(){
+    $(".export").hide();
+    toggle_load();
+    $.get("#{mimi_lists_path}.json", {}, function(data, status, xhr){
+      var lists, options, i;
+      lists = data.lists.list;
+      options = "";
+      globaldebug = lists;
+      for(i in lists) {
+        options += "<option value="+lists[i].name+">"+lists[i].name+"</option>";
+      }
+      $(document.getElementsByName('madmimi_list')).html(options);
+      $(".export").show();
+    });
+
+    $("#export_form").bind('ajax:beforeSend', toggle_load).bind('ajax:complete', toggle_load);
+  });
 
