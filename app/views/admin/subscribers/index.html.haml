@@ -24,7 +24,7 @@
   = select_tag "madmimi_list"
   = submit_tag "Import checked to list", id: "export_submit"
   = image_tag "loading.gif", id: "spinner"
-  %span#done
+  %span#done{style: "background-color: #00ff00;"}
 
 :javascript
   var globaldebug;
@@ -33,8 +33,8 @@
     for(var i in checkboxes) checkboxes[i].checked = source.checked;
   }
 
-  function toggle_load() { $("#spinner").toggle(); $("#done").html(""); }
-  function complete() { $("#done").html("Done."); toggle_load }
+  function toggle_load() { $("#spinner").toggle(); $("#done").html(" "); }
+  function complete() { toggle_load(); $("#done").html("&nbsp;Done.&nbsp;"); }
 
   $(document).ready(function(){
     $(".export").hide();
@@ -51,6 +51,6 @@
       $(".export").show();
     });
 
-    $("#export_form").bind('ajax:beforeSend', toggle_load).bind('ajax:complete', toggle_load);
+    $("#export_form").bind('ajax:beforeSend', toggle_load).bind('ajax:complete', complete);
   });
 
