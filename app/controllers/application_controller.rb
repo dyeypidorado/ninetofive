@@ -45,7 +45,9 @@ class ApplicationController < ActionController::Base
     @contact      = StaticPage.find_or_create_by_name("Contact")
     @book         = StaticPage.find_or_create_by_name("Books")
     @merchandise  = StaticPage.find_or_create_by_name("Merchandise")
+    @events       = StaticPage.find_or_create_by_name("Events")
     @seminars     = StaticPage.find_or_create_by_name("Seminars")
+    @workshops    = StaticPage.find_or_create_by_name("Workshops")
   end
 
   def get_settings
