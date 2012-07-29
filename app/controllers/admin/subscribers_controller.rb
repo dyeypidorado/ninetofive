@@ -41,7 +41,6 @@ class Admin::SubscribersController < Admin::BaseController
     list   = params[:madmimi_list]
     ids    = []
 
-    require 'pry'; binding.pry
     unless emails.blank? || list.blank?
       for email in emails
         ids << spawn_block do
