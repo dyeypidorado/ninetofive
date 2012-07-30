@@ -17,6 +17,7 @@ gem 'responders'
 gem "rails-settings-cached"
 gem 'paperclip'
 gem 'spawn', git: "https://github.com/rfc2822/spawn.git"
+gem 'rails_admin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

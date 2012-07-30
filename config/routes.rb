@@ -1,4 +1,11 @@
 Ninetofive::Application.routes.draw do
+  mount RailsAdmin::Engine => '/cms', :as => 'rails_admin'
+
+  devise_for :admins
+  devise_for :members
+
+  
+
   post 'export_to_madmimi' => "admin::subscribers#export"
   get 'mimi_lists' => "admin::subscribers#mimi_lists"
   namespace :mercury do
@@ -8,8 +15,6 @@ Ninetofive::Application.routes.draw do
   get "confirm_subscription/:confirmation_code" => "subscribers#confirm_subscription", as: :confirmation
 
   mount Mercury::Engine => '/'
-
-  devise_for :admins
 
   namespace :admin do
     resources :subscribers
