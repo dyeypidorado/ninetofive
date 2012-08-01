@@ -1,5 +1,6 @@
 class Admin::SubscribersController < Admin::BaseController
-  before_filter :set_madmimi, :only => [:destroy]
+  before_filter :set_madmimi
+  respond_to :html, :json
 
   def index
     if params[:product_id]
@@ -33,6 +34,26 @@ class Admin::SubscribersController < Admin::BaseController
       @mimi.remove_from_list(@subscriber.email, @product.listname)
     end
     redirect_to admin_product_subscribers_path(@product.id)
+  end
+
+  def export
+    emails = params[:import_email]
+    list   = params[:madmimi_list]
+    ids    = []
+
+    unless emails.blank? || list.blank?
+      for email in emails
+        ids << spawn_block do
+          @mimi.add_to_list(email, list);
+        end
+      end
+    end
+    render text: "ok" if wait(ids)
+  end
+
+  def mimi_lists
+    @lists = @mimi.lists
+    respond_with @lists
   end
 end
 

@@ -33,8 +33,10 @@
           %li= link_to "Home", root_path, class: cp?(root_path)
 
         %li= link_to "Book", @book, class: cp?(polymorphic_path(@book))
-        %li= link_to "Merchandise", @merchandise, class: cp?(polymorphic_path(@merchandise))
-        %li= link_to "Seminars", @seminars, class: cp?(polymorphic_path(@seminars))
+        %li=# link_to "Merchandise", @merchandise, class: cp?(polymorphic_path(@merchandise))
+        %li= link_to "Products", "http://shop.9to5mil.com"
+        %li= link_to "Workshops", @workshops, class: cp?(polymorphic_path(@workshops))
+        %li= link_to "Events", @events, class: cp?(polymorphic_path(@events))
         %li= link_to "News", @news, class: cp?(polymorphic_path(@news))
         %li= link_to "Contact", @contact, class: cp?(polymorphic_path(@contact))
 

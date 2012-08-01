@@ -15,6 +15,9 @@ gem 'jquery-rails'
 gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '9d7bfc0ffbdd36cd1777a8e439a424aefda953d0'
 gem 'responders'
 gem "rails-settings-cached"
+gem 'paperclip'
+gem 'spawn', git: "https://github.com/rfc2822/spawn.git"
+gem 'rails_admin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -50,5 +53,4 @@ group :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
 end
-gem 'paperclip'
 
