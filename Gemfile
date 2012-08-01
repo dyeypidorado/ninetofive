@@ -42,5 +42,4 @@ group :test do
   gem 'ffaker'
   gem 'shoulda-matchers'
 end
-
 gem 'paperclip'
