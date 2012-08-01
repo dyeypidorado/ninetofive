@@ -12,7 +12,7 @@ class SubscribersController < ApplicationController
     #@page = Page.find_by_id params[:page_id]
     @product = Product.find(params[:product_id])
     @list = @product.lists.create
-    @subscriber = Subscriber.create params[:subscriber]
+    @subscriber = Subscriber.new params[:subscriber]
     @affiliate = Affiliate.find params[:affiliate][:id] if params[:affiliate][:id].present?
     @campaign = Campaign.find_by_trigger_code params[:campaign][:trigger_code] if params[:campaign][:trigger_code].present?
 
@@ -36,6 +36,7 @@ class SubscribersController < ApplicationController
       # redirect_to step_product_subscriber_path(@product.id, @subscriber.id)
       redirect_to root_path
     else
+      #redirect_to request.referrer
       render template: "products/show"
     end
   end
