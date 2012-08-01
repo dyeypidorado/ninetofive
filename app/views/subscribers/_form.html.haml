@@ -13,6 +13,8 @@
     = hidden_field :campaign, :trigger_code
     = hidden_field_tag :fb, true unless @fb.nil?
     - if @subscriber.errors.any?
+      -# flash[:notice]  = "#{pluralize(@subscriber.errors.count, "error")} is stopping you from being signed up.<br/><em>#{@subscriber.errors.full_messages}</em>"
+
       %div#error_explanation
         %h2 #{pluralize(@subscriber.errors.count, "error")} is stopping you from being signed up:
         %ul

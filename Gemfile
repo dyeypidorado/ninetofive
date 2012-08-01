@@ -40,17 +40,7 @@ group :test do
   gem 'rb-inotify'
   gem 'libnotify'
   gem 'ffaker'
-end
-
-group :test do
-  gem 'spork'
-  gem 'database_cleaner'
-  gem 'guard-rspec'
-  gem 'guard-rake'
-  gem 'guard-spork'
-  gem 'rb-inotify'
-  gem 'libnotify'
-  gem 'ffaker'
   gem 'shoulda-matchers'
 end
 
+gem 'paperclip'

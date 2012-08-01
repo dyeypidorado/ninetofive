@@ -8,4 +8,3 @@ describe StaticPage do
   it { should respond_to(:region4) }
   it { should respond_to(:region5) }
 end
-

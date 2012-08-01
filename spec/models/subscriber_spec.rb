@@ -27,4 +27,3 @@ describe Subscriber do
     end
   end
 end
-

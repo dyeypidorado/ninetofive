@@ -11,7 +11,8 @@ class Step < ActiveRecord::Base
   belongs_to :campaign
 
   def page_create
-    self.create_page title: self.promotion_name
+    #self.create_page title: self.promotion_name
+    Page.create title: self.promotion_name
   end
 
   def set_next_step
