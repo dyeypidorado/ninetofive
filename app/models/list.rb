@@ -14,6 +14,8 @@ class List < ActiveRecord::Base
   delegate :name, :email, to: :subscriber, prefix: true, allow_nil: true
   delegate :name, to: :affiliate, prefix: true, allow_nil: true
 
+  default_scope where("subscriber_id IS NOT NULL OR subscriber_id != ''")
+
   def status
     case status_code
     when StatusCode::Pending
