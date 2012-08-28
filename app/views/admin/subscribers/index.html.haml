@@ -19,7 +19,7 @@
         %td= sub.subscriber_email
         %td= sub.step_promotion_name
         %td= sub.affiliate_name
-        %td= sub.is_fb
+        %td{style: "text-align: center"}= sub.is_fb
 
   = select_tag "madmimi_list"
   = submit_tag "Import checked to list", id: "export_submit"
