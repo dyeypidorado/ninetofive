@@ -43,7 +43,7 @@ class SubscribersController < ApplicationController
 
   # Confirm subscription to page
   def confirm_subscription
-    list = List.includes(:subscriber, :step).find_by_confirmation_code params[:confirmation_code]
+    list = List.unscoped.includes(:subscriber, :step).find_by_confirmation_code params[:confirmation_code]
     step = list.step
 
     if !@source.nil?
